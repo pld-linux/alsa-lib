@@ -21,8 +21,6 @@ BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
-ExcludeArch:	sparc
-ExcludeArch:	sparc64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc
