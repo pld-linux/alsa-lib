@@ -10,11 +10,11 @@ Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
-BuildRequires:	libstdc++-devel
-BuildRequires:	ncurses-devel
-BuildRequires:	flex
 BuildRequires:	doxygen
+BuildRequires:	flex
+BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
+BuildRequires:	ncurses-devel
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
 ExcludeArch:	sparc
@@ -56,18 +56,18 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka
 
 Nowinki =======
 - generalne
-  - zmodularyzowana architektura ze wsparciem dla kerneli 2.2
+  - zmodularyzowana architektura ze wsparciem dla j±der 2.2
   - pe³ne wsparcie dla systemu plików proc - /proc/sound
 - karty d¼wiêkowe ISA
-  - wsparcie dla buforu 128k ISA DMA
+  - wsparcie dla bufora 128k ISA DMA
 - mikser
   - nowe rozszerzone API dla aplikacji
   - wsparcie dla nielimitowanej liczby kana³ów
   - g³o¶no¶æ mo¿e byæ ustawiana na trzy ró¿ne sposoby (procentowo
     (0-100), liniowo oraz w skali decybelowej)
-  - wsparcie dla mute (oraz dla sprzêtowego mute)
+  - wsparcie dla wyciszania (oraz sprzêtowego wyciszania)
   - wsparcie dla zdarzeñ miksera
-    - to pozwala dwum lub wiêkszej liczbie aplikacji siê synchronizowac
+    - to pozwala dwum lub wiêkszej liczbie aplikacji siê synchronizowaæ
 - cyfrowe audio (PCM)
   - nowe rozszerzone API dla aplikacji
   - pe³ne realne wsparcie dla trybu duplex
@@ -135,7 +135,7 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
-%{__automake} --add-missing
+%{__automake}
 %configure \
 	--enable-static 
 	
@@ -151,17 +151,17 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/%{_aclocaldir}
 cp utils/alsa.m4 $RPM_BUILD_ROOT/%{_aclocaldir}
 
-%post  -p /sbin/ldconfig
-%preun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_bindir}/*
-%{_datadir}/alsa/*
+%{_datadir}/alsa
 
 %files devel
 %defattr(644,root,root,755)
