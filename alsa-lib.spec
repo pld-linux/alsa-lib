@@ -1,14 +1,14 @@
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Name:		alsa-lib
-Version:	0.3.0pre4
-Release:	2
+Version:	0.3.1
+Release:	1
 Copyright:	GPL
 Group:		System/Libraries
 Group(pl):	System/Biblioteki
-Source:		ftp://alsa.jcu.cz/pub/lib/%{name}-%{version}.tar.gz
-URL:		http://alsa.jcu.cz/
-BuildPrereq:	alsa-driver-devel >= 0.3.0pre1
+Source:		ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.gz
+URL:		http://www.alsa-project.org/
+BuildPrereq:	alsa-driver-devel >= 0.3.1
 Requires:       alsa-driver
 BuildRoot:	/tmp/%{name}-%{version}-root
 
@@ -117,10 +117,11 @@ gzip -9nf ChangeLog doc/*.txt
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/lib*.so.*
 
 %files devel
 %defattr(644,root,root,755)
+%{_datadir}/aclocal/alsa.m4
 %doc *.gz doc/*.gz
 
 %attr(755,root,root) %{_libdir}/lib*.so
@@ -131,6 +132,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/lib*.a
 
 %changelog
+* Sat Jul 05 1999 Arkadiusz Mi¶kiewicz <misiek@pld.org.pl>
+- updated to 0.3.1
+- added %{_datadir}/aclocal/alsa.m4
+
 * Tue May 25 1999 Piotr Czerwiñski <pius@pld.org.pl> 
   [0.3.0pre4-2]
 - package is FHS 2.0 compliant,
