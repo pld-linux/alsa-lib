@@ -5,12 +5,13 @@ Summary(pt_BR):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	0.9.8
-Release:	1
+Version:	1.0.0
+%define		_pre	pre1
+Release:	0.%{_pre}.1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	c9f163fb0623de1b92bf287712641f6e
+Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}%{_pre}.tar.bz2
+# Source0-md5:	08bd25b3a78258fb504c915706ad5cdd
 Patch0:		alsa-lib-bluezsco.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
@@ -159,7 +160,7 @@ Bibliotecas estАticas para desenvolvimento com a alsa-lib
 Статична б╕бл╕отека API для роботи з драйвером ALSA.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{_pre}
 %patch0 -p1
 
 %build
