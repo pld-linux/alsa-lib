@@ -15,6 +15,7 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	flex
 BuildRequires:	doxygen
+BuildRequires:	libtool
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
 ExcludeArch:	sparc
