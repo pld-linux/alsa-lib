@@ -9,7 +9,7 @@ License:	GPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 #Source1:	http://www.alsa-project.org/~perex/alsa-lib/%{name}.tgz
-Patch0:		%{name}-m4_fix.patch
+#Patch0:	%{name}-m4_fix.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	libstdc++-devel
@@ -132,7 +132,7 @@ Advanced Linux Sound Architecture (ALSA) - pliki nag³ówkowe.
 
 %prep
 %setup -q
-%patch0
+#%patch0
 
 %build
 libtoolize --copy --force
@@ -146,6 +146,8 @@ automake -a -c -f
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/%{_aclocaldir}
+cp utils/alsa.m4 $RPM_BUILD_ROOT/%{_aclocaldir}
 
 gzip -9nf ChangeLog
 
