@@ -4,17 +4,17 @@ Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	0.9.0rc1
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 #Source1:	http://www.alsa-project.org/~perex/alsa-lib/%{name}.tgz
-#Patch0:	%{name}-m4_fix.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	flex
+BuildRequires:	doxygen
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
 ExcludeArch:	sparc
@@ -110,46 +110,49 @@ Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe.
 Б╕бл╕отеки програм╕ста та хедери для б╕бл╕отеки API для роботи з
 драйвером ALSA.
 
-#%package static
-#Summary:	Advanced Linux Sound Architecture (ALSA) - Static library
-#Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
-#Summary(ru):	Статическая библиотека API для работы с драйвером ALSA
-#Summary(uk):	Статична б╕бл╕отека API для роботи з драйвером ALSA
-#Group:		Development/Libraries
-#Requires:	%{name}-devel = %{version}
+%package static
+Summary:	Advanced Linux Sound Architecture (ALSA) - Static library
+Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
+Summary(ru):	Статическая библиотека API для работы с драйвером ALSA
+Summary(uk):	Статична б╕бл╕отека API для роботи з драйвером ALSA
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}
 
-#%description static
-#Advanced Linux Sound Architecture (ALSA) - Static library.
+%description static
+Advanced Linux Sound Architecture (ALSA) - Static library.
 
-#%description static -l pl
-#Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
+%description static -l pl
+Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 
-#%description static -l ru
-#Статическая библиотека API для работы с драйвером ALSA.
+%description static -l ru
+Статическая библиотека API для работы с драйвером ALSA.
 
-#%description static -l uk
-#Статична б╕бл╕отека API для роботи з драйвером ALSA.
+%description static -l uk
+Статична б╕бл╕отека API для роботи з драйвером ALSA.
 
 %prep
 %setup -q
-#%patch0
 
 %build
 libtoolize --copy --force
 aclocal
 autoconf
 automake -a -c -f
-%configure CC=%{__cc}
+%configure \
+	--enable-static \
+	CC=%{__cc}
+	
 %{__make}
+%{__make} doc
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
 install -d $RPM_BUILD_ROOT/%{_aclocaldir}
 cp utils/alsa.m4 $RPM_BUILD_ROOT/%{_aclocaldir}
-
-gzip -9nf ChangeLog
 
 %post  -p /sbin/ldconfig
 %preun -p /sbin/ldconfig
@@ -165,13 +168,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-#%doc *.gz *.html *.gif
+%doc doc/doxygen/html/*
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_aclocaldir}/alsa.m4
 %{_includedir}/sys/*.h
 %{_includedir}/alsa/*.h
 
-#%files static
-#%defattr(644,root,root,755)
-#%{_libdir}/lib*.a
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
