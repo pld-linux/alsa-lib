@@ -27,7 +27,7 @@ Obsoletes:	alsa-libs
 %description
 Advanced Linux Sound Architecture (ALSA) - Library
 
-Features ========
+Features:
 - general
   - modularized architecture with support for 2.2
   - support for versioned and exported symbols
@@ -55,23 +55,24 @@ Features ========
 %description -l pl
 Advanced Linux Sound Architecture (ALSA) - Biblioteka
 
-Nowinki =======
+Mo¿liwo¶ci:
 - generalne
   - zmodularyzowana architektura ze wsparciem dla j±der 2.2
   - pe³ne wsparcie dla systemu plików proc - /proc/sound
 - karty d¼wiêkowe ISA
-  - wsparcie dla bufora 128k ISA DMA
+  - obs³uga bufora 128k ISA DMA
 - mikser
   - nowe rozszerzone API dla aplikacji
-  - wsparcie dla nielimitowanej liczby kana³ów
+  - obs³uga nielimitowanej liczby kana³ów
   - g³o¶no¶æ mo¿e byæ ustawiana na trzy ró¿ne sposoby (procentowo
     (0-100), liniowo oraz w skali decybelowej)
-  - wsparcie dla wyciszania (oraz sprzêtowego wyciszania)
-  - wsparcie dla zdarzeñ miksera
+  - obs³uga wyciszania (oraz sprzêtowego wyciszania)
+  - obs³uga zdarzeñ miksera
     - to pozwala dwum lub wiêkszej liczbie aplikacji siê synchronizowaæ
 - cyfrowe audio (PCM)
   - nowe rozszerzone API dla aplikacji
-  - pe³ne realne wsparcie dla trybu duplex
+  - pe³na, prawdziwa obs³uga trybu duplex
+  - pe³na obs³uga trybu duplex dla kart SoundBlaster 16/AWE
   - dane cyfrowego d¼wiêku dla odtwarzania i nagrywania powinny byæ
     odczytywane poprzez system plików /proc
 - kompatybilno¶æ z OSS/Lite
@@ -110,18 +111,18 @@ Advanced Linux Sound Architecture (ALSA) - pliki nag³ówkowe.
 ÄÒÁÊ×ÅÒÏÍ ALSA.
 
 %package static
-Summary:	Advanced Linux Sound Architecture (ALSA) - Static library
-Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
+Summary:	Advanced Linux Sound Architecture (ALSA) - static library
+Summary(pl):	Advanced Linux Sound Architecture (ALSA) - biblioteka statyczna
 Summary(ru):	óÔÁÔÉŞÅÓËÁÑ ÂÉÂÌÉÏÔÅËÁ API ÄÌÑ ÒÁÂÏÔÙ Ó ÄÒÁÊ×ÅÒÏÍ ALSA
 Summary(uk):	óÔÁÔÉŞÎÁ Â¦ÂÌ¦ÏÔÅËÁ API ÄÌÑ ÒÏÂÏÔÉ Ú ÄÒÁÊ×ÅÒÏÍ ALSA
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}
 
 %description static
-Advanced Linux Sound Architecture (ALSA) - Static library.
+Advanced Linux Sound Architecture (ALSA) - static library.
 
 %description static -l pl
-Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
+Advanced Linux Sound Architecture (ALSA) - biblioteka statyczna.
 
 %description static -l ru
 óÔÁÔÉŞÅÓËÁÑ ÂÉÂÌÉÏÔÅËÁ API ÄÌÑ ÒÁÂÏÔÙ Ó ÄÒÁÊ×ÅÒÏÍ ALSA.
@@ -149,7 +150,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}
+install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
 
 %clean
 rm -rf $RPM_BUILD_ROOT
