@@ -2,7 +2,7 @@ Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Name:		alsa-lib
 Version:	0.5.10
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
@@ -13,10 +13,7 @@ URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	flex
-BuildRequires:	libtool
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
 ExcludeArch:	sparc
