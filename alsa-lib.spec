@@ -30,7 +30,7 @@ Advanced Linux Sound Architecture (ALSA) - Library
 Features
 ========
 * general
-  - modularized architecture with support for 2.0 and latest 2.1 kernels
+  - modularized architecture with support for 2.2
   - support for versioned and exported symbols
   - full proc filesystem support - /proc/sound
 * ISA soundcards
@@ -58,7 +58,7 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Nowinki
 =======
 * generalne
-  - zmodularyzowana architektura ze wsparciem dla kerneli 2.0 jak i 2.1
+  - zmodularyzowana architektura ze wsparciem dla kerneli 2.2
   - pe³ne wsparcie dla systemu plików proc - /proc/sound
 * karty d¼wiêkowe ISA
   - wsparcie dla buforu 128k ISA DMA
@@ -81,7 +81,7 @@ Nowinki
 
 %package devel
 Summary:	Advanced Linux Sound Architecture (ALSA) - header files
-Summary(pl):	Advanced Linux Sound Architecture (ALSA) - pliki nag³owkowe
+Summary(pl):	Advanced Linux Sound Architecture (ALSA) - pliki nag³ówkowe
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -123,7 +123,7 @@ make install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
-gzip -9nf ChangeLog doc/*.txt
+gzip -9nf ChangeLog
 
 %post  -p /sbin/ldconfig
 %preun -p /sbin/ldconfig
@@ -137,8 +137,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz doc/*.gz
-%attr(755,root,root) %{_libdir}/libasound.so
+%doc *.gz
+%attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_datadir}/aclocal/alsa.m4
 %{_includedir}/sys/*.h
