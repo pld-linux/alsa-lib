@@ -1,11 +1,13 @@
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
+Summary(es):	Biblioteca para ALSA (Advanced Linux Sound Architecture)
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
+Summary(pt_BR):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	0.9.5
 Release:	1
-License:	GPL
+License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 # Source0-md5:	8237c7f0b6c57a4d36feacff5818ffe0
@@ -52,6 +54,9 @@ Features:
   - full mixer compatibity
   - full PCM (/dev/dsp) compatibility
 
+%description -l es
+Bibliotecas para el sistema de sonido ALSA. Este paquete se necesita para ejecutar programas Linux que usan el programa de control de sonido ALSA.
+
 %description -l pl
 Advanced Linux Sound Architecture (ALSA) - Biblioteka
 
@@ -79,6 +84,9 @@ Mo©liwo╤ci:
   - peЁna kompatybilno╤Ф miksera
   - peЁna kompatybilno╤Ф PCM (/dev/dsp)
 
+%description -l pt_BR
+Bibliotecas para o ALSA. Esse pacote И necessАrio para rodar programas Linux queusam o driver de som ALSA.
+
 %description -l ru
 Библиотека API для работы с драйвером ALSA.
 
@@ -87,7 +95,9 @@ Mo©liwo╤ci:
 
 %package devel
 Summary:	Advanced Linux Sound Architecture (ALSA) - header files
+Summary(es):	Archivos de desarrollo de ALSA (Advanced Linux Sound Architecture)
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe
+Summary(pt_BR):	Arquivos de desenvolvimento do ALSA (Advanced Linux Sound Architecture)
 Summary(ru):	Библиотека API для работы с драйвером ALSA - файлы программиста
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA - файли програм╕ста
 Group:		Development/Libraries
@@ -99,8 +109,18 @@ Obsoletes:	alsa-devel
 %description devel
 Advanced Linux Sound Architecture (ALSA) - header files.
 
+%description devel -l es
+Este paquete contiene los archivos necesarios para compilar programas
+que usan la biblioteca del sistema ALSA. No es necesario instalarlo si
+lo que se desea es solamente ejecutar programas.
+
 %description devel -l pl
 Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe.
+
+%description devel -l pt_BR
+Esse pacote contИm os arquivos necessАrios para compilar programas que
+usam a biblioteca do ALSA. NЦo И necessАrio instalar esse pacote para
+apenas rodar programas.
 
 %description devel -l ru
 Библиотеки разработчика и хедера для библиотеки API для работы с
@@ -113,6 +133,7 @@ Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe.
 %package static
 Summary:	Advanced Linux Sound Architecture (ALSA) - static library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - biblioteka statyczna
+Summary(pt_BR): Bibliotecas estАticas para desenvolvimento com a alsa-lib
 Summary(ru):	Статическая библиотека API для работы с драйвером ALSA
 Summary(uk):	Статична б╕бл╕отека API для роботи з драйвером ALSA
 Group:		Development/Libraries
@@ -123,6 +144,9 @@ Advanced Linux Sound Architecture (ALSA) - static library.
 
 %description static -l pl
 Advanced Linux Sound Architecture (ALSA) - biblioteka statyczna.
+
+%description static -l pt_BR
+Bibliotecas estАticas para desenvolvimento com a alsa-lib
 
 %description static -l ru
 Статическая библиотека API для работы с драйвером ALSA.
