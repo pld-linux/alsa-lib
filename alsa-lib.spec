@@ -121,7 +121,7 @@ gzip -9nf ChangeLog doc/*.txt
 %doc *.gz doc/*.gz
 
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(644,root,root) /usr/include/sys/*.h
+%attr(644,root,root) %{_includedir}/sys/*.h
 
 %files static
 %attr(644,root,root) %{_libdir}/lib*.a
