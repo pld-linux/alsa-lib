@@ -130,16 +130,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-
-%changelog
-* Sat Jul 05 1999 Arkadiusz Mi¶kiewicz <misiek@pld.org.pl>
-- updated to 0.3.1
-- added %{_datadir}/aclocal/alsa.m4
-
-* Tue May 25 1999 Piotr Czerwiñski <pius@pld.org.pl> 
-  [0.3.0pre4-2]
-- package is FHS 2.0 compliant,
-- based on spec file made by Helge Jensen <slog@slog.dk>,
-- rewritten for PLD use by Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  and Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>,
-- pl translation by Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>.
