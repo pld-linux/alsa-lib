@@ -1,7 +1,7 @@
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Name:		alsa-lib
-Version:	0.3.1
+Version:	0.4.0
 Release:	1
 Copyright:	GPL
 Group:		System/Libraries
@@ -107,6 +107,8 @@ rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+
+chmod +x $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 gzip -9nf ChangeLog doc/*.txt
 
