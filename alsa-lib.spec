@@ -8,7 +8,7 @@ Group:		System/Libraries
 Group(pl):	System/Biblioteki
 Source:		ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.gz
 URL:		http://www.alsa-project.org/
-BuildPrereq:	alsa-driver-devel >= 0.3.1
+BuildRequires:	alsa-driver-devel >= 0.3.1
 Requires:       alsa-driver
 BuildRoot:	/tmp/%{name}-%{version}-root
 
