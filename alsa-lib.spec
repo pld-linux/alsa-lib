@@ -114,7 +114,7 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 %setup -q -a1
 
 %build
-%configure
+%configure2_13
 %{__make}
 
 %install
