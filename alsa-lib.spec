@@ -12,16 +12,16 @@ Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 # Source0-md5:	ddcaf22dcd10cee131635d1cf7fe43b9
 URL:		http://www.alsa-project.org/
-BuildConflicts:	alsa-lib <= 0.4.0
 BuildRequires:	alsa-driver-devel
 BuildRequires:	doxygen
 BuildRequires:	flex
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
+BuildConflicts:	alsa-lib <= 0.4.0
+Obsoletes:	alsa-libs
 ExcludeArch:	sparc
 ExcludeArch:	sparc64
-Obsoletes:	alsa-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc
@@ -55,7 +55,9 @@ Features:
   - full PCM (/dev/dsp) compatibility
 
 %description -l es
-Bibliotecas para el sistema de sonido ALSA. Este paquete se necesita para ejecutar programas Linux que usan el programa de control de sonido ALSA.
+Bibliotecas para el sistema de sonido ALSA. Este paquete se necesita
+para ejecutar programas Linux que usan el programa de control de
+sonido ALSA.
 
 %description -l pl
 Advanced Linux Sound Architecture (ALSA) - Biblioteka
@@ -85,7 +87,8 @@ Mo¿liwo¶ci:
   - pe³na kompatybilno¶æ PCM (/dev/dsp)
 
 %description -l pt_BR
-Bibliotecas para o ALSA. Esse pacote é necessário para rodar programas Linux queusam o driver de som ALSA.
+Bibliotecas para o ALSA. Esse pacote é necessário para rodar programas
+Linux queusam o driver de som ALSA.
 
 %description -l ru
 âÉÂÌÉÏÔÅËÁ API ÄÌÑ ÒÁÂÏÔÙ Ó ÄÒÁÊ×ÅÒÏÍ ALSA.
@@ -184,8 +187,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_datadir}/alsa
 
 %files devel
