@@ -6,12 +6,12 @@ Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.0
-%define		_pre	pre1
+%define		_pre	rc2
 Release:	0.%{_pre}.1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}%{_pre}.tar.bz2
-# Source0-md5:	08bd25b3a78258fb504c915706ad5cdd
+# Source0-md5:	eccc78e1157334a024d0a8e521a88593
 Patch0:		alsa-lib-bluezsco.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
