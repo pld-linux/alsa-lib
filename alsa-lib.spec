@@ -136,7 +136,7 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
-%{__automake}
+%{__automake} --add-missing
 %configure \
 	--enable-static 
 	
