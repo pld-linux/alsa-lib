@@ -163,8 +163,8 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-static 
-	
+	--enable-static
+
 %{__make}
 %{__make} doc
 
