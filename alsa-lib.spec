@@ -36,28 +36,28 @@ Advanced Linux Sound Architecture (ALSA) - Library
 
 Features:
 - general
-  - modularized architecture with support for 2.2
-  - support for versioned and exported symbols
-  - full proc filesystem support - /proc/sound
+	- modularized architecture with support for 2.2
+	- support for versioned and exported symbols
+	- full proc filesystem support - /proc/sound
 - ISA soundcards
-  - support for 128k ISA DMA buffer
+	- support for 128k ISA DMA buffer
 - mixer
-  - new enhanced API for applications
-  - support for unlimited number of channels
-  - volume can be set in three ways (percentual (0-100), exact and
-    decibel)
-  - support for mute (and hardware mute if hardware supports it)
-  - support for mixer events
-    - this allows two or more applications to be synchronized
+	- new enhanced API for applications
+	- support for unlimited number of channels
+	- volume can be set in three ways (percentual (0-100), exact and
+	  decibel)
+	- support for mute (and hardware mute if hardware supports it)
+	- support for mixer events
+		- this allows two or more applications to be synchronized
 - digital audio (PCM)
-  - new enhanced API for applications
-  - full real duplex support
-  - full duplex support for SoundBlaster 16/AWE soundcards
-  - digital audio data for playback and record should be read back using
-    proc filesystem
+	- new enhanced API for applications
+	- full real duplex support
+	- full duplex support for SoundBlaster 16/AWE soundcards
+	- digital audio data for playback and record should be read back using
+	  proc filesystem
 - OSS/Lite compatibility
-  - full mixer compatibity
-  - full PCM (/dev/dsp) compatibility
+	- full mixer compatibity
+	- full PCM (/dev/dsp) compatibility
 
 %description -l es
 Bibliotecas para el sistema de sonido ALSA. Este paquete se necesita
@@ -69,27 +69,27 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka
 
 Mo¿liwo¶ci:
 - generalne
-  - zmodularyzowana architektura ze wsparciem dla j±der 2.2
-  - pe³ne wsparcie dla systemu plików proc - /proc/sound
+	- zmodularyzowana architektura ze wsparciem dla j±der 2.2
+	- pe³ne wsparcie dla systemu plików proc - /proc/sound
 - karty d¼wiêkowe ISA
-  - obs³uga bufora 128k ISA DMA
+	- obs³uga bufora 128k ISA DMA
 - mikser
-  - nowe rozszerzone API dla aplikacji
-  - obs³uga nielimitowanej liczby kana³ów
-  - g³o¶no¶æ mo¿e byæ ustawiana na trzy ró¿ne sposoby (procentowo
-    (0-100), liniowo oraz w skali decybelowej)
-  - obs³uga wyciszania (oraz sprzêtowego wyciszania)
-  - obs³uga zdarzeñ miksera
-    - to pozwala dwum lub wiêkszej liczbie aplikacji siê synchronizowaæ
+	- nowe rozszerzone API dla aplikacji
+	- obs³uga nielimitowanej liczby kana³ów
+	- g³o¶no¶æ mo¿e byæ ustawiana na trzy ró¿ne sposoby (procentowo
+	  (0-100), liniowo oraz w skali decybelowej)
+	- obs³uga wyciszania (oraz sprzêtowego wyciszania)
+	- obs³uga zdarzeñ miksera
+		- to pozwala dwum lub wiêkszej liczbie aplikacji siê synchronizowaæ
 - cyfrowe audio (PCM)
-  - nowe rozszerzone API dla aplikacji
-  - pe³na, prawdziwa obs³uga trybu duplex
-  - pe³na obs³uga trybu duplex dla kart SoundBlaster 16/AWE
-  - dane cyfrowego d¼wiêku dla odtwarzania i nagrywania powinny byæ
-    odczytywane poprzez system plików /proc
+	- nowe rozszerzone API dla aplikacji
+	- pe³na, prawdziwa obs³uga trybu duplex
+	- pe³na obs³uga trybu duplex dla kart SoundBlaster 16/AWE
+	- dane cyfrowego d¼wiêku dla odtwarzania i nagrywania powinny byæ
+	  odczytywane poprzez system plików /proc
 - kompatybilno¶æ z OSS/Lite
-  - pe³na kompatybilno¶æ miksera
-  - pe³na kompatybilno¶æ PCM (/dev/dsp)
+	- pe³na kompatybilno¶æ miksera
+	- pe³na kompatybilno¶æ PCM (/dev/dsp)
 
 %description -l pt_BR
 Bibliotecas para o ALSA. Esse pacote é necessário para rodar programas
