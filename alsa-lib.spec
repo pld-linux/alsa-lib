@@ -124,10 +124,11 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.gz doc/*.gz
 
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(644,root,root) %{_includedir}/sys/*.h
+%{_includedir}/sys/*.h
 
 %files static
-%attr(644,root,root) %{_libdir}/lib*.a
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
 
 %changelog
 * Tue May 25 1999 Piotr Czerwiñski <pius@pld.org.pl> 
