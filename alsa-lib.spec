@@ -22,7 +22,6 @@ ExcludeArch:	sparc64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc
-%define 	__prefix	/usr/share
 
 %description
 Advanced Linux Sound Architecture (ALSA) - Library
@@ -162,7 +161,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_bindir}/*
-%{__prefix}/alsa/*
+%{_datadir}/alsa/*
 
 %files devel
 %defattr(644,root,root,755)
