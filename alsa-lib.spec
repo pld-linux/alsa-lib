@@ -11,6 +11,7 @@ License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 # Source0-md5:	a87abc76f6201f4ce38ebc2ff1076a44
+Patch0:		alsa-lib-bluezsco.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	doxygen
@@ -159,6 +160,7 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
