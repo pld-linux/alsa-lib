@@ -10,17 +10,17 @@ Group:		Libraries
 # Source0-md5:	c7851a3e4343f660002d862d7dc91ecd
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 URL:		http://www.alsa-project.org/
+BuildConflicts:	alsa-lib <= 0.4.0
 BuildRequires:	alsa-driver-devel
 BuildRequires:	doxygen
 BuildRequires:	flex
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	ncurses-devel
-BuildConflicts:	alsa-lib <= 0.4.0
-Obsoletes:	alsa-libs
 ExcludeArch:	sparc
 ExcludeArch:	sparc64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+Obsoletes:	alsa-libs
 
 %define		_sysconfdir	/etc
 
@@ -149,8 +149,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT/%{_aclocaldir}
-cp utils/alsa.m4 $RPM_BUILD_ROOT/%{_aclocaldir}
+install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
