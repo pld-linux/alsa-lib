@@ -1,14 +1,19 @@
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
+Summary(ru):	Библиотека API для работы с драйвером ALSA
+Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	0.5.10b
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
 Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
+Group(pt_BR):	Bibliotecas
+Group(ru):	Библиотеки
+Group(uk):	Б╕бл╕отеки
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 Source1:	http://www.alsa-project.org/~perex/alsa-lib/%{name}.tgz
 URL:		http://www.alsa-project.org/
@@ -78,13 +83,25 @@ Nowinki =======
   - peЁna kompatybilno╤Ф miksera
   - peЁna kompatybilno╤Ф PCM (/dev/dsp)
 
+%description -l ru
+Библиотека API для работы с драйвером ALSA.
+
+%description -l uk
+Б╕бл╕отека API для роботи з драйвером ALSA.
+
 %package devel
 Summary:	Advanced Linux Sound Architecture (ALSA) - header files
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe
+Summary(ru):	Библиотека API для работы с драйвером ALSA - файлы программиста
+Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA - файли програм╕ста
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	alsa-driver-devel
 Obsoletes:	alsa-lib-devel-doc
@@ -96,13 +113,27 @@ Advanced Linux Sound Architecture (ALSA) - header files.
 %description -l pl devel
 Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe.
 
+%description -l ru devel
+Библиотеки разработчика и хедера для библиотеки API для работы с
+драйвером ALSA.
+
+%description -l uk devel
+Б╕бл╕отеки програм╕ста та хедери для б╕бл╕отеки API для роботи з
+драйвером ALSA.
+
 %package static
 Summary:	Advanced Linux Sound Architecture (ALSA) - Static library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
+Summary(ru):	Статическая библиотека API для работы с драйвером ALSA
+Summary(uk):	Статична б╕бл╕отека API для роботи з драйвером ALSA
 Group:		Development/Libraries
 Group(de):	Entwicklung/Libraries
+Group(es):	Desarrollo/Bibliotecas
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
+Group(pt_BR):	Desenvolvimento/Bibliotecas
+Group(ru):	Разработка/Библиотеки
+Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -110,6 +141,12 @@ Advanced Linux Sound Architecture (ALSA) - Static library.
 
 %description -l pl static
 Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
+
+%description -l ru static
+Статическая библиотека API для работы с драйвером ALSA.
+
+%description -l uk static
+Статична б╕бл╕отека API для роботи з драйвером ALSA.
 
 %prep
 %setup -q -a1
