@@ -133,7 +133,7 @@ apenas rodar programas.
 %package static
 Summary:	Advanced Linux Sound Architecture (ALSA) - static library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - biblioteka statyczna
-Summary(pt_BR): Bibliotecas estАticas para desenvolvimento com a alsa-lib
+Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com a alsa-lib
 Summary(ru):	Статическая библиотека API для работы с драйвером ALSA
 Summary(uk):	Статична б╕бл╕отека API для роботи з драйвером ALSA
 Group:		Development/Libraries
