@@ -3,17 +3,18 @@ Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	0.5.10b
-Release:	2
+Version:	0.9.0rc4
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-Source1:	http://www.alsa-project.org/~perex/alsa-lib/%{name}.tgz
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	flex
+BuildRequires:	doxygen
+BuildRequires:	libtool
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
 ExcludeArch:	sparc
@@ -21,6 +22,7 @@ ExcludeArch:	sparc64
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc
+%define 	__prefix	/usr/share
 
 %description
 Advanced Linux Sound Architecture (ALSA) - Library
@@ -128,16 +130,27 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 Статична б╕бл╕отека API для роботи з драйвером ALSA.
 
 %prep
-%setup -q -a1
+%setup -q
 
 %build
-%configure2_13
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__automake}
+%configure \
+	--enable-static 
+	
 %{__make}
+%{__make} doc
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+install -d $RPM_BUILD_ROOT/%{_aclocaldir}
+cp utils/alsa.m4 $RPM_BUILD_ROOT/%{_aclocaldir}
 
 %post  -p /sbin/ldconfig
 %preun -p /sbin/ldconfig
@@ -148,14 +161,19 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_bindir}/*
+%{__prefix}/alsa/*
 
 %files devel
 %defattr(644,root,root,755)
-%doc ChangeLog *.html *.gif
+%doc doc/doxygen/html/*
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_aclocaldir}/alsa.m4
 %{_includedir}/sys/*.h
+%{_includedir}/alsa/*.h
+%{_includedir}/alsa/sound/*.h
+%{_pkgconfigdir}/*.pc
 
 %files static
 %defattr(644,root,root,755)
