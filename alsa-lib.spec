@@ -1,8 +1,3 @@
-#
-# TODO:
-#  - track this bug - alsasink in gstreamer isn't working
-#    https://bugtrack.alsa-project.org/alsa-bug/bug_view_page.php?bug_id=0000116
-#
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(es):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
@@ -10,12 +5,12 @@ Summary(pt_BR):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.0.7
+Version:	1.0.8
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	34ceaac0d1f0fc2b1462cef7c3a6825e
+# Source0-md5:	c677299ed39d069c9a4b6a999e34ffe7
 Patch0:		%{name}-alpha.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
