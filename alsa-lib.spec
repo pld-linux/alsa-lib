@@ -92,18 +92,18 @@ Requires:	%{name} = %{version}
 Requires:	alsa-driver-devel
 Obsoletes:	alsa-lib-devel-doc
 Obsoletes:	alsa-devel
- 
+
 %description devel
 Advanced Linux Sound Architecture (ALSA) - header files.
 
-%description -l pl devel
+%description devel -l pl
 Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe.
 
-%description -l ru devel
+%description devel -l ru
 Библиотеки разработчика и хедера для библиотеки API для работы с
 драйвером ALSA.
 
-%description -l uk devel
+%description devel -l uk
 Б╕бл╕отеки програм╕ста та хедери для б╕бл╕отеки API для роботи з
 драйвером ALSA.
 
@@ -118,13 +118,13 @@ Requires:	%{name}-devel = %{version}
 %description static
 Advanced Linux Sound Architecture (ALSA) - Static library.
 
-%description -l pl static
+%description static -l pl
 Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 
-%description -l ru static
+%description static -l ru
 Статическая библиотека API для работы с драйвером ALSA.
 
-%description -l uk static
+%description static -l uk
 Статична б╕бл╕отека API для роботи з драйвером ALSA.
 
 %prep
