@@ -88,6 +88,7 @@ Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 Requires:	alsa-driver-devel
 Obsoletes:	alsa-lib-devel-doc
+Obsoletes:	alsa-devel
  
 %description devel
 Advanced Linux Sound Architecture (ALSA) - header files.
