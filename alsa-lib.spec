@@ -1,17 +1,17 @@
-Summary:	Advanced Linux Sound Architecture (ALSA) - Library
-Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
-Name:		alsa-lib
-Version:	0.3.0pre3
-Release:	1d
-Copyright:	GPL
-Vendor:		Jaroslav Kysela <perex@jcu.cz>
-Group:		Libraries
-Group(pl):	Biblioteki
-Source:		ftp://alsa.jcu.cz/pub/lib/%{name}-%{version}.tar.gz
-BuildRoot:	/tmp/%{name}-%{version}-buildroot
-URL:		http://alsa.jcu.cz
-Requires:	alsa-driver
-Prereq:		/sbin/ldconfig
+Summary:     Advanced Linux Sound Architecture (ALSA) - Library
+Name:	     alsa-lib
+Version:     0.3.0pre3
+Release:     1d
+Copyright:   GPL
+Vendor:      Jaroslav Kysela <perex@jcu.cz>
+Group:	     System/Libraries
+Group(pl):   System/Biblioteki
+Source:	     ftp://alsa.jcu.cz/pub/lib/%{name}-%{version}.tar.gz
+BuildRoot:   /tmp/%{name}-%{version}-buildroot
+URL:	     http://alsa.jcu.cz
+Requires:    alsa-driver
+Prereq:	     /sbin/ldconfig
+Summary(pl): Advanced Linux Sound Architecture (ALSA) - Biblioteka
 
 %description
 Advanced Linux Sound Architecture (ALSA) - Library
@@ -68,12 +68,12 @@ Nowinki
   - pe³na kompatybilno¶æ miksera
   - pe³na kompatybilno¶æ PCM (/dev/dsp)
 
-%package	static
-Summary:	Advanced Linux Sound Architecture (ALSA) - Static library
-Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
-Group:		Libraries
-Group(pl):	Biblioteki
-Requires:	%{name} = %{version}
+%package static
+Summary:     Advanced Linux Sound Architecture (ALSA) - Static library
+Group:       System/Libraries
+Group(pl):   System/Biblioteki
+Requires:    %{name} = %{version}
+Summary(pl): Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
 
 %description static
 Advanced Linux Sound Architecture (ALSA) - Static library
@@ -96,7 +96,7 @@ install -d $RPM_BUILD_ROOT/usr/{include/sys,lib}
 
 make prefix=$RPM_BUILD_ROOT/usr install
 
-strip $RPM_BUILD_ROOT/usr/lib/lib*.so.*.*
+chmod 755 $RPM_BUILD_ROOT/usr/lib/lib*.so.*
 
 bzip2 -9 ChangeLog doc/*.txt
 
@@ -112,19 +112,18 @@ bzip2 -9 ChangeLog doc/*.txt
 %attr(644,root,root) /usr/include/sys/*.h
 
 %files static
-%defattr(644,root,root,755)
-/usr/lib/lib*.a
+%attr(644,root,root) /usr/lib/lib*.a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
 * Wed Jan 21 1999 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
-  [0.3.0pre3-1d]
+[0.3.0pre3-1d]
 - new upstream release
 
 * Sat Jan 02 1999 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
-  [0.3.0pre2-1d]
+[0.3.0pre2-1d]
 - new upstream release
 
 * Thu Nov 12 1998 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
