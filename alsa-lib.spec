@@ -3,12 +3,12 @@ Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	0.9.3
+Version:	0.9.4
 Release:	1
 License:	GPL
 Group:		Libraries
+# Source0-md5:	c7851a3e4343f660002d862d7dc91ecd
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5: 1d431e8c16ae2426495998884d18911f
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	doxygen
