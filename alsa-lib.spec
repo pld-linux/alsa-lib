@@ -10,7 +10,7 @@ Release:	2
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	b693e10f964e7b9dc8ee8b055ece5e2e
+# Source0-md5:	b2a0d5d46e0d67e48594e98215ecfd73
 Patch0:		%{name}-bluezsco.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
