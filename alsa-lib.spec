@@ -5,6 +5,7 @@ Version:	0.5.9
 Release:	3
 License:	GPL
 Group:		Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 URL:		http://www.alsa-project.org/
