@@ -1,7 +1,7 @@
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Name:		alsa-lib
-Version:	0.3.2
+Version:	0.3.1
 Release:	1
 Copyright:	GPL
 Group:		System/Libraries
