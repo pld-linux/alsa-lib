@@ -1,14 +1,14 @@
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Name:		alsa-lib
-Version:	0.3.1
+Version:	0.3.2
 Release:	1
 Copyright:	GPL
 Group:		System/Libraries
 Group(pl):	System/Biblioteki
 Source:		ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.gz
 URL:		http://www.alsa-project.org/
-BuildRequires:	alsa-driver-devel >= 0.3.1
+BuildRequires:	alsa-driver-devel >= %{version}
 Requires:       alsa-driver
 BuildRoot:	/tmp/%{name}-%{version}-root
 
@@ -97,9 +97,8 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 %setup -q 
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure \
-	--prefix=%{_prefix}
+LDFLAGS="-s"; export LDFLAGS
+%configure
 make
 
 %install
