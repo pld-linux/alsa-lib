@@ -7,13 +7,6 @@ Version:	0.5.10b
 Release:	2
 License:	GPL
 Group:		Libraries
-Group(de):	Libraries
-Group(es):	Bibliotecas
-Group(fr):	Librairies
-Group(pl):	Biblioteki
-Group(pt_BR):	Bibliotecas
-Group(ru):	Библиотеки
-Group(uk):	Б╕бл╕отеки
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 Source1:	http://www.alsa-project.org/~perex/alsa-lib/%{name}.tgz
 URL:		http://www.alsa-project.org/
@@ -95,13 +88,6 @@ Summary(pl):	Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe
 Summary(ru):	Библиотека API для работы с драйвером ALSA - файлы программиста
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA - файли програм╕ста
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name} = %{version}
 Requires:	alsa-driver-devel
 Obsoletes:	alsa-lib-devel-doc
@@ -127,13 +113,6 @@ Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
 Summary(ru):	Статическая библиотека API для работы с драйвером ALSA
 Summary(uk):	Статична б╕бл╕отека API для роботи з драйвером ALSA
 Group:		Development/Libraries
-Group(de):	Entwicklung/Libraries
-Group(es):	Desarrollo/Bibliotecas
-Group(fr):	Development/Librairies
-Group(pl):	Programowanie/Biblioteki
-Group(pt_BR):	Desenvolvimento/Bibliotecas
-Group(ru):	Разработка/Библиотеки
-Group(uk):	Розробка/Б╕бл╕отеки
 Requires:	%{name}-devel = %{version}
 
 %description static
