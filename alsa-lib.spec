@@ -20,7 +20,7 @@ BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
 ExcludeArch:	sparc
 ExcludeArch:	sparc64
-BuildRoot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc
 
@@ -91,7 +91,6 @@ Advanced Linux Sound Architecture (ALSA) - header files.
 
 %description -l pl devel
 Advanced Linux Sound Architecture (ALSA) - pliki nag³ówkowe.
-
 
 %package static
 Summary:	Advanced Linux Sound Architecture (ALSA) - Static library
