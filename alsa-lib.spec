@@ -9,6 +9,7 @@ Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
+Source1:	http://www.alsa-project.org/~perex/alsa-lib/alsa-lib.tgz
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	libstdc++-devel
@@ -85,6 +86,7 @@ Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 Requires:	alsa-driver-devel
+Obsoletes:	alsa-lib-devel-doc
  
 %description devel
 Advanced Linux Sound Architecture (ALSA) - header files.
@@ -108,7 +110,7 @@ Advanced Linux Sound Architecture (ALSA) - Static library.
 Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 
 %prep
-%setup -q
+%setup -q -a1
 
 %build
 %configure
@@ -133,7 +135,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz
+%doc *.gz *.html *.gif
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_aclocaldir}/alsa.m4
