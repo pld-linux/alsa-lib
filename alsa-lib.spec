@@ -6,10 +6,11 @@ Release:	1
 License:	GPL
 Group:		Libraries
 Group(de):	Libraries
+Group(es):	Bibliotecas
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-Source1:	http://www.alsa-project.org/~perex/alsa-lib/alsa-lib.tgz
+Source1:	http://www.alsa-project.org/~perex/alsa-lib/%{name}.tgz
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	libstdc++-devel
