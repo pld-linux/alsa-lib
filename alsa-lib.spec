@@ -5,12 +5,12 @@ Summary(pt_BR):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	0.9.5
+Version:	0.9.6
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	8237c7f0b6c57a4d36feacff5818ffe0
+# Source0-md5:	ddcaf22dcd10cee131635d1cf7fe43b9
 URL:		http://www.alsa-project.org/
 BuildConflicts:	alsa-lib <= 0.4.0
 BuildRequires:	alsa-driver-devel
@@ -21,8 +21,8 @@ BuildRequires:	libtool
 BuildRequires:	ncurses-devel
 ExcludeArch:	sparc
 ExcludeArch:	sparc64
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Obsoletes:	alsa-libs
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc
 
@@ -103,8 +103,8 @@ Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA - файли програм╕ста
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	alsa-driver-devel
-Obsoletes:	alsa-lib-devel-doc
 Obsoletes:	alsa-devel
+Obsoletes:	alsa-lib-devel-doc
 
 %description devel
 Advanced Linux Sound Architecture (ALSA) - header files.
