@@ -4,9 +4,9 @@ Name:		alsa-lib
 Version:	0.5.7
 Release:	1
 License:	GPL
-Group:		System/Libraries
-Group(pl):	System/Biblioteki
-Source0:	ftp://ftp.alsa-project.org/pub/lib/alsa-lib-%{version}.tar.bz2
+Group:		Libraries
+Group(pl):	Biblioteki
+Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 URL:		http://www.alsa-project.org/
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
@@ -25,55 +25,54 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Advanced Linux Sound Architecture (ALSA) - Library
 
-Features
-========
-* general
+Features ========
+- general
   - modularized architecture with support for 2.2
   - support for versioned and exported symbols
   - full proc filesystem support - /proc/sound
-* ISA soundcards
+- ISA soundcards
   - support for 128k ISA DMA buffer
-* mixer
+- mixer
   - new enhanced API for applications
   - support for unlimited number of channels
-  - volume can be set in three ways (percentual (0-100), exact and decibel)
+  - volume can be set in three ways (percentual (0-100), exact and
+    decibel)
   - support for mute (and hardware mute if hardware supports it)
   - support for mixer events
     - this allows two or more applications to be synchronized
-* digital audio (PCM)
+- digital audio (PCM)
   - new enhanced API for applications
   - full real duplex support
   - full duplex support for SoundBlaster 16/AWE soundcards
   - digital audio data for playback and record should be read back using
     proc filesystem
-* OSS/Lite compatibility
+- OSS/Lite compatibility
   - full mixer compatibity
   - full PCM (/dev/dsp) compatibility
 
 %description -l pl
 Advanced Linux Sound Architecture (ALSA) - Biblioteka
 
-Nowinki
-=======
-* generalne
+Nowinki =======
+- generalne
   - zmodularyzowana architektura ze wsparciem dla kerneli 2.2
   - pe³ne wsparcie dla systemu plików proc - /proc/sound
-* karty d¼wiêkowe ISA
+- karty d¼wiêkowe ISA
   - wsparcie dla buforu 128k ISA DMA
-* mikser
+- mikser
   - nowe rozszerzone API dla aplikacji
   - wsparcie dla nielimitowanej liczby kana³ów
-  - g³o¶no¶æ mo¿e byæ ustawiana na trzy ró¿ne sposoby (procentowo (0-100),
-    liniowo oraz w skali decybelowej)
+  - g³o¶no¶æ mo¿e byæ ustawiana na trzy ró¿ne sposoby (procentowo
+    (0-100), liniowo oraz w skali decybelowej)
   - wsparcie dla mute (oraz dla sprzêtowego mute)
   - wsparcie dla zdarzeñ miksera
     - to pozwala dwum lub wiêkszej liczbie aplikacji siê synchronizowac
-* cyfrowe audio (PCM)
+- cyfrowe audio (PCM)
   - nowe rozszerzone API dla aplikacji
   - pe³ne realne wsparcie dla trybu duplex
-  - dane cyfrowego d¼wiêku dla odtwarzania i nagrywania powinny byæ odczytywane
-    poprzez system plików /proc
-* kompatybilno¶æ z OSS/Lite
+  - dane cyfrowego d¼wiêku dla odtwarzania i nagrywania powinny byæ
+    odczytywane poprzez system plików /proc
+- kompatybilno¶æ z OSS/Lite
   - pe³na kompatybilno¶æ miksera
   - pe³na kompatybilno¶æ PCM (/dev/dsp)
 
@@ -81,6 +80,7 @@ Nowinki
 Summary:	Advanced Linux Sound Architecture (ALSA) - header files
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - pliki nag³ówkowe
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
  
@@ -94,6 +94,7 @@ Advanced Linux Sound Architecture (ALSA) - pliki nag³ówkowe.
 Summary:	Advanced Linux Sound Architecture (ALSA) - Static library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
 Group:		Development/Libraries
+Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
@@ -134,7 +135,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc *.gz
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
-%{_datadir}/aclocal/alsa.m4
+%{_aclocaldir}/alsa.m4
 %{_includedir}/sys/*.h
 
 %files static
