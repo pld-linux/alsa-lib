@@ -1,0 +1,10 @@
+--- utils/Makefile.am~	Wed Dec 30 18:11:53 1998
++++ utils/Makefile.am	Tue May  7 23:38:46 2002
+@@ -1,7 +1,5 @@
+-if INSTALL_M4
+ aclocaldir=$(datadir)/aclocal
+ aclocal_DATA=alsa.m4
+-endif
+ EXTRA_DIST=alsa.m4 buildrpm
+ 
+ rpm: buildrpm alsa-lib.spec
