@@ -17,9 +17,6 @@ BuildRequires:	automake
 BuildRequires:	flex
 BuildRequires:	libtool
 BuildConflicts:	alsa-lib <= 0.4.0
-Prereq:		/sbin/depmod
-Prereq:		/sbin/ldconfig
-Prereq:		/sbin/chkconfig
 Obsoletes:	alsa-libs
 ExcludeArch:	sparc
 ExcludeArch:	sparc64
@@ -124,24 +121,19 @@ make
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*-*so
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
-#chmod +x $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+gzip -9nf ChangeLog doc/*.txt
 
-gzip -9nf ChangeLog doc/*.txt || :
-
-%post
-/sbin/ldconfig
-
-%preun
-/sbin/ldconfig
+%post  -p /sbin/ldconfig
+%preun -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*-*so
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
