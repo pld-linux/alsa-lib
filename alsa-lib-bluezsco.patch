@@ -1,0 +1,13 @@
+diff -urN alsa-lib-orig/include/hwdep.h alsa-lib-0.9.7/include/hwdep.h
+--- alsa-lib-orig/include/hwdep.h	2003-10-11 11:14:53.000000000 +0200
++++ alsa-lib-0.9.7/include/hwdep.h	2003-10-11 11:16:13.000000000 +0200
+@@ -63,7 +63,8 @@
+ 	SND_HWDEP_IFACE_VX,		/**< Digigram VX cards */
+ 	SND_HWDEP_IFACE_MIXART,		/**< Digigram miXart cards */
+ 	SND_HWDEP_IFACE_USX2Y,		/**< Tascam US122, US224 & US428 usb */
+-	SND_HWDEP_IFACE_LAST = SND_HWDEP_IFACE_USX2Y  /**< last know hwdep interface */
++	SND_HWDEP_IFACE_BLUEZ_SCO,	/**< Bluez SCO Headset */
++	SND_HWDEP_IFACE_LAST = SND_HWDEP_IFACE_BLUEZ_SCO  /**< last know hwdep interface */
+ } snd_hwdep_iface_t;
+ 
+ /** open for reading */
