@@ -171,8 +171,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_aclocaldir}/alsa.m4
 %{_includedir}/sys/*.h
-%{_includedir}/alsa/*.h
-%{_includedir}/alsa/sound/*.h
+%{_includedir}/alsa
 %{_pkgconfigdir}/*.pc
 
 %files static
