@@ -2,15 +2,15 @@ Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Name:		alsa-lib
 Version:	0.3.0pre4
-Release:	1
+Release:	2
 Copyright:	GPL
-Vendor:		Jaroslav Kysela <perex@jcu.cz>
 Group:		System/Libraries
 Group(pl):	System/Biblioteki
 Source:		ftp://alsa.jcu.cz/pub/lib/%{name}-%{version}.tar.gz
 URL:		http://alsa.jcu.cz/
+BuildPrereq:	alsa-driver-devel >= 0.3.0pre1
+Requires:       alsa-driver
 BuildRoot:	/tmp/%{name}-%{version}-root
-Requires:	alsa-driver
 
 %description
 Advanced Linux Sound Architecture (ALSA) - Library
@@ -98,20 +98,23 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
-./configure %{_target} \
-	--prefix=/usr
+./configure \
+	--prefix=%{_prefix}
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/usr/{include/sys,lib}
+install -d $RPM_BUILD_ROOT{%{_includedir}/sys,%{_libdir}}
 
-make prefix=$RPM_BUILD_ROOT/usr install
+make prefix=$RPM_BUILD_ROOT%{_prefix} install
 
 gzip -9nf ChangeLog doc/*.txt
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %files
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
@@ -126,37 +129,11 @@ gzip -9nf ChangeLog doc/*.txt
 %files static
 %attr(644,root,root) %{_libdir}/lib*.a
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %changelog
-* Sat Feb 27 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
-  [0.3.0pre4-1]
-- added CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" to configure enviroment,
-- changed Group in static to Development/Libraries,
-- removed "Prereq: /sbin/ldconfig" - it is generated automatically,
-- added devel subpackage.
-
-* Wed Jan 21 1999 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
-  [0.3.0pre3-1d]
-- new upstream release
-
-* Sat Jan 02 1999 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
-  [0.3.0pre2-1d]
-- new upstream release
-
-* Thu Nov 12 1998 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
-- new upstream release (0.1.3)
-
-* Fri Nov 06 1998 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
-- new upstream release
-
-* Mon Sep 28 1998 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
-- changed "-" to "_" (rpm doesn't like "-" in Name or Version)
-
-* Sun Sep 27 1998 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
-- added Polish translations
-- rewrited spec file
-
-* Mon May 28 1998 Helge Jensen <slog@slog.dk>
-- Made SPEC file
+* Tue May 25 1999 Piotr Czerwiñski <pius@pld.org.pl> 
+  [0.3.0pre4-2]
+- package is FHS 2.0 compliant,
+- based on spec file made by Helge Jensen <slog@slog.dk>,
+- rewritten for PLD use by Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  and Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>,
+- pl translation by Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>.
