@@ -1,3 +1,9 @@
+#
+# TODO:
+#  - track this bug - alsasink in gstreamer isn't working
+#    (Patch1 doesn't solve anything, just removes the assertion)
+#    https://bugtrack.alsa-project.org/alsa-bug/bug_view_page.php?bug_id=0000116
+#
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(es):	Biblioteca para ALSA (Advanced Linux Sound Architecture)
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
@@ -12,6 +18,7 @@ Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 # Source0-md5:	5f0967a9e71ffdfb47c41fed9e52d9a5
 Patch0:		%{name}-bluezsco.patch
+Patch1:		%{name}-plug_hw_param.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf
@@ -161,6 +168,7 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1 
 
 %build
 %{__libtoolize}
