@@ -4,7 +4,7 @@
 #    https://bugtrack.alsa-project.org/alsa-bug/bug_view_page.php?bug_id=0000116
 #
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
-Summary(es):	Biblioteca para ALSA (Advanced Linux Sound Architecture)
+Summary(es):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Summary(pt_BR):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru):	Библиотека API для работы с драйвером ALSA
@@ -58,11 +58,6 @@ Features:
 	- full mixer compatibity
 	- full PCM (/dev/dsp) compatibility
 
-%description -l es
-Bibliotecas para el sistema de sonido ALSA. Este paquete se necesita
-para ejecutar programas Linux que usan el programa de control de
-sonido ALSA.
-
 %description -l pl
 Advanced Linux Sound Architecture (ALSA) - Biblioteka
 
@@ -102,7 +97,7 @@ Linux queusam o driver de som ALSA.
 
 %package devel
 Summary:	Advanced Linux Sound Architecture (ALSA) - header files
-Summary(es):	Archivos de desarrollo de ALSA (Advanced Linux Sound Architecture)
+Summary(es):	Archivos de desarrollo de ALSA
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe
 Summary(pt_BR):	Arquivos de desenvolvimento do ALSA (Advanced Linux Sound Architecture)
 Summary(ru):	Библиотека API для работы с драйвером ALSA - файлы программиста
