@@ -1,17 +1,16 @@
-Summary:     Advanced Linux Sound Architecture (ALSA) - Library
-Name:	     alsa-lib
-Version:     0.3.0pre3
-Release:     1d
-Copyright:   GPL
-Vendor:      Jaroslav Kysela <perex@jcu.cz>
-Group:	     System/Libraries
-Group(pl):   System/Biblioteki
-Source:	     ftp://alsa.jcu.cz/pub/lib/%{name}-%{version}.tar.gz
-BuildRoot:   /tmp/%{name}-%{version}-buildroot
-URL:	     http://alsa.jcu.cz
-Requires:    alsa-driver
-Prereq:	     /sbin/ldconfig
-Summary(pl): Advanced Linux Sound Architecture (ALSA) - Biblioteka
+Summary:	Advanced Linux Sound Architecture (ALSA) - Library
+Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
+Name:		alsa-lib
+Version:	0.3.0pre4
+Release:	1
+Copyright:	GPL
+Vendor:		Jaroslav Kysela <perex@jcu.cz>
+Group:		System/Libraries
+Group(pl):	System/Biblioteki
+Source:		ftp://alsa.jcu.cz/pub/lib/%{name}-%{version}.tar.gz
+URL:		http://alsa.jcu.cz/
+BuildRoot:	/tmp/%{name}-%{version}-root
+Requires:	alsa-driver
 
 %description
 Advanced Linux Sound Architecture (ALSA) - Library
@@ -68,47 +67,60 @@ Nowinki
   - pe³na kompatybilno¶æ miksera
   - pe³na kompatybilno¶æ PCM (/dev/dsp)
 
+%package devel
+Summary:	Header files fo ALSA library
+Summary(pl):	Pliki nag³owkowe do biblioteki ALSA
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name} = %{version}
+
+%description devel
+Header files fo ALSA library.
+
+%description -l pl devel
+Pliki nag³owkowe do biblioteki ALSA.
+
 %package static
-Summary:     Advanced Linux Sound Architecture (ALSA) - Static library
-Group:       System/Libraries
-Group(pl):   System/Biblioteki
-Requires:    %{name} = %{version}
-Summary(pl): Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
+Summary:	Advanced Linux Sound Architecture (ALSA) - Static library
+Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
+Group:		Development/Libraries
+Group(pl):	Programowanie/Biblioteki
+Requires:	%{name}-devel = %{version}
 
 %description static
-Advanced Linux Sound Architecture (ALSA) - Static library
+Advanced Linux Sound Architecture (ALSA) - Static library.
 
 %description -l pl static
-Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
+Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 
 %prep
 %setup -q 
 
 %build
-autoconf 
-./configure --prefix=/usr
+CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" \
+./configure \
+	--prefix=/usr
 make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT/usr/{include/sys,lib}
 
 make prefix=$RPM_BUILD_ROOT/usr install
 
-chmod 755 $RPM_BUILD_ROOT/usr/lib/lib*.so.*
-
-bzip2 -9 ChangeLog doc/*.txt
+gzip -9nf ChangeLog doc/*.txt
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
+%attr(755,root,root) /usr/lib/lib*.so.*.*
+
+%files devel
 %defattr(644,root,root,755)
-%doc ChangeLog.bz2 doc/*.txt.bz2
+%doc *.gz doc/*.gz
 
 %attr(755,root,root) /usr/lib/lib*.so
-%attr(755,root,root) /usr/lib/lib*.so.*
 %attr(644,root,root) /usr/include/sys/*.h
 
 %files static
@@ -118,12 +130,19 @@ bzip2 -9 ChangeLog doc/*.txt
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Sat Feb 27 1999 Tomasz K³oczko <kloczek@rudy.mif.pg.gda.pl>
+  [0.3.0pre4-1]
+- added CFLAGS="$RPM_OPT_FLAGS" LDFLAGS="-s" to configure enviroment,
+- changed Group in static to Development/Libraries,
+- removed "Prereq: /sbin/ldconfig" - it is generated automatically,
+- added devel subpackage.
+
 * Wed Jan 21 1999 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
-[0.3.0pre3-1d]
+  [0.3.0pre3-1d]
 - new upstream release
 
 * Sat Jan 02 1999 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
-[0.3.0pre2-1d]
+  [0.3.0pre2-1d]
 - new upstream release
 
 * Thu Nov 12 1998 Arkadiusz Mi¶kiewicz <misiek@misiek.eu.org>
