@@ -103,9 +103,10 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_includedir}/sys,%{_libdir}}
 
-make prefix=$RPM_BUILD_ROOT%{_prefix} install
+make install DESTDIR=$RPM_BUILD_ROOT
+
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 gzip -9nf ChangeLog doc/*.txt
 
@@ -116,14 +117,15 @@ gzip -9nf ChangeLog doc/*.txt
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
-%{_datadir}/aclocal/alsa.m4
 %doc *.gz doc/*.gz
 
 %attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
+%{_datadir}/aclocal/alsa.m4
 %{_includedir}/sys/*.h
 
 %files static
