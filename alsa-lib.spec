@@ -101,7 +101,7 @@ Summary:	Advanced Linux Sound Architecture (ALSA) - Static library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
 Group:		Development/Libraries
 Group(pl):	Programowanie/Biblioteki
-Requires:	%{name}-devel = %{lib_ver}
+Requires:	%{name}-devel = %{version}
 
 %description static
 Advanced Linux Sound Architecture (ALSA) - Static library.
@@ -122,7 +122,6 @@ make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-cd alsa-lib-%{lib_ver}
 make install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*-*so
