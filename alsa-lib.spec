@@ -2,9 +2,10 @@ Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
 Name:		alsa-lib
 Version:	0.5.9
-Release:	3
+Release:	4
 License:	GPL
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
@@ -81,6 +82,7 @@ Nowinki =======
 Summary:	Advanced Linux Sound Architecture (ALSA) - header files
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - pliki nag³ówkowe
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -95,6 +97,7 @@ Advanced Linux Sound Architecture (ALSA) - pliki nag³ówkowe.
 Summary:	Advanced Linux Sound Architecture (ALSA) - Static library
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -109,15 +112,13 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka statyczna.
 %setup -q
 
 %build
-LDFLAGS="-s"; export LDFLAGS
 %configure
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+%{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 gzip -9nf ChangeLog
 
