@@ -15,6 +15,32 @@
  	struct shmid_ds buf;
  	int tmpid, err;
  	size_t size;
+@@ -244,9 +245,9 @@
+ 		} while (*sum != old_sample);
+ 		if (!--size)
+ 			return;
+-		((char *)src) += src_step;
+-		((char *)dst) += dst_step;
+-		((char *)sum) += sum_step;
++		src = ((void *)src) + src_step;
++		dst = ((void *)dst) + dst_step;
++		sum = ((void *)sum) + sum_step;
+ 	}
+ }
+ 
+@@ -276,9 +277,9 @@
+ 		} while (*sum != old_sample);
+ 		if (!--size)
+ 			return;
+-		((char *)src) += src_step;
+-		((char *)dst) += dst_step;
+-		((char *)sum) += sum_step;
++		src = ((void *)src) + src_step;
++		dst = ((char *)dst) + dst_step;
++		sum = ((char *)sum) + sum_step;
+ 	}
+ }
+ 
 --- alsa-lib-1.0.8/src/conf.c.orig	2004-10-05 17:33:04.000000000 +0200
 +++ alsa-lib-1.0.8/src/conf.c	2005-05-03 14:53:20.000000000 +0200
 @@ -2494,9 +2494,11 @@
