@@ -36,8 +36,8 @@
 -		((char *)dst) += dst_step;
 -		((char *)sum) += sum_step;
 +		src = ((void *)src) + src_step;
-+		dst = ((char *)dst) + dst_step;
-+		sum = ((char *)sum) + sum_step;
++		dst = ((void *)dst) + dst_step;
++		sum = ((void *)sum) + sum_step;
  	}
  }
  
