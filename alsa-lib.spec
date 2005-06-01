@@ -11,7 +11,6 @@ License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 # Source0-md5:	114af3304619920ffe2b147b760700b9
-Patch0:		%{name}-alpha.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf
@@ -153,7 +152,6 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
