@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs	# don't build static library
+#
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(es):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
 Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
@@ -159,7 +163,8 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 %{__autoconf}
 %{__automake}
 %configure \
-	--enable-static
+	--enable-static \
+	%{!?with_static_libs:--disable-static}
 
 %{__make}
 %{__make} doc
@@ -194,6 +199,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/alsa
 %{_pkgconfigdir}/*.pc
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
+%endif
