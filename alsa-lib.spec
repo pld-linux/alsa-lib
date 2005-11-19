@@ -10,12 +10,11 @@ Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.10
-%define		_rc	rc3
-Release:	0.%{_rc}.1
+Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}%{_rc}.tar.bz2
-# Source0-md5:	41b328380be366adf1d59d01380c7515
+Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
+# Source0-md5:	b1a4e15c9ff81798507de470a92fcc43
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf
@@ -34,7 +33,7 @@ Advanced Linux Sound Architecture (ALSA) - Library
 
 Features:
 - general
-	- modularized architecture with support for 2.2
+	- modularized architecture
 	- support for versioned and exported symbols
 	- full proc filesystem support - /proc/sound
 - ISA soundcards
@@ -62,7 +61,7 @@ Advanced Linux Sound Architecture (ALSA) - Biblioteka
 
 Mo©liwo╤ci:
 - generalne
-	- zmodularyzowana architektura ze wsparciem dla j╠der 2.2
+	- zmodularyzowana architektura
 	- peЁne wsparcie dla systemu plikСw proc - /proc/sound
 - karty d╪wiЙkowe ISA
 	- obsЁuga bufora 128k ISA DMA
@@ -156,8 +155,7 @@ Bibliotecas estАticas para desenvolvimento com a alsa-lib
 Статична б╕бл╕отека API для роботи з драйвером ALSA.
 
 %prep
-#setup -q
-%setup -q -n %{name}-%{version}%{_rc}
+%setup -q
 
 %build
 %{__libtoolize}
@@ -179,6 +177,8 @@ rm -rf $RPM_BUILD_ROOT
 
 install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
 
+rm -f $RPM_BUILD_ROOT%{_libdir}/alsa-lib/smixer/*.{a,la}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -189,6 +189,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%dir %{_libdir}/alsa-lib
+%dir %{_libdir}/alsa-lib/smixer
+%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-*.so
 %{_datadir}/alsa
 
 %files devel
