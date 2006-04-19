@@ -9,12 +9,13 @@ Summary(pt_BR):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.0.10
-Release:	1
+Version:	1.0.11
+%define	snap	rc5
+Release:	0.%{snap}.1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	b1a4e15c9ff81798507de470a92fcc43
+Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}%{snap}.tar.bz2
+# Source0-md5:	b600e1caf9da06f6a8e39b448f4dee38
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf
@@ -155,7 +156,7 @@ Bibliotecas estАticas para desenvolvimento com a alsa-lib
 Статична б╕бл╕отека API для роботи з драйвером ALSA.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{snap}
 
 %build
 %{__libtoolize}
