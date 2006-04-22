@@ -10,12 +10,11 @@ Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.11
-%define	snap	rc5
-Release:	0.%{snap}.1
+Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}%{snap}.tar.bz2
-# Source0-md5:	b600e1caf9da06f6a8e39b448f4dee38
+Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
+# Source0-md5:	ef7ae78a0ef08cbeacb295f2518886ab
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf
@@ -156,7 +155,7 @@ Bibliotecas estАticas para desenvolvimento com a alsa-lib
 Статична б╕бл╕отека API для роботи з драйвером ALSA.
 
 %prep
-%setup -q -n %{name}-%{version}%{snap}
+%setup -q
 
 %build
 %{__libtoolize}
