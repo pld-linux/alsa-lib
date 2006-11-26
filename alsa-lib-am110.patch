@@ -1,0 +1,13 @@
+diff -urN alsa-lib-1.0.13.orig/src/Makefile.am alsa-lib-1.0.13.new/src/Makefile.am
+--- alsa-lib-1.0.13.orig/src/Makefile.am	2006-09-29 13:42:56.000000000 +0200
++++ alsa-lib-1.0.13.new/src/Makefile.am	2006-11-26 13:06:47.000000000 +0100
+@@ -43,8 +43,7 @@
+ SUBDIRS += compat conf
+ libasound_la_LIBADD += compat/libcompat.la -lm -ldl -lpthread
+ 
+-libasound_la_LDFLAGS = -version-info $(COMPATNUM)
+-AM_LDFLAGS = $(VSYMS)
++libasound_la_LDFLAGS = -version-info $(COMPATNUM) $(VSYMS)
+ 
+ control/libcontrol.la:
+ 	$(MAKE) -C control libcontrol.la
