@@ -3,11 +3,11 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
-Summary(es.UTF-8):   Advanced Linux Sound Architecture (ALSA) - Biblioteca
-Summary(pl.UTF-8):   Advanced Linux Sound Architecture (ALSA) - Biblioteka
-Summary(pt_BR.UTF-8):   Biblioteca para o ALSA (Advanced Linux Sound Architecture)
-Summary(ru.UTF-8):   Библиотека API для работы с драйвером ALSA
-Summary(uk.UTF-8):   Бібліотека API для роботи з драйвером ALSA
+Summary(es.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
+Summary(pl.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
+Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
+Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
+Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.13
 Release:	3
@@ -96,11 +96,11 @@ Linux queusam o driver de som ALSA.
 
 %package devel
 Summary:	Advanced Linux Sound Architecture (ALSA) - header files
-Summary(es.UTF-8):   Archivos de desarrollo de ALSA
-Summary(pl.UTF-8):   Advanced Linux Sound Architecture (ALSA) - pliki nagłówkowe
-Summary(pt_BR.UTF-8):   Arquivos de desenvolvimento do ALSA (Advanced Linux Sound Architecture)
-Summary(ru.UTF-8):   Библиотека API для работы с драйвером ALSA - файлы программиста
-Summary(uk.UTF-8):   Бібліотека API для роботи з драйвером ALSA - файли програміста
+Summary(es.UTF-8):	Archivos de desarrollo de ALSA
+Summary(pl.UTF-8):	Advanced Linux Sound Architecture (ALSA) - pliki nagłówkowe
+Summary(pt_BR.UTF-8):	Arquivos de desenvolvimento do ALSA (Advanced Linux Sound Architecture)
+Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA - файлы программиста
+Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA - файли програміста
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	alsa-driver-devel
@@ -133,10 +133,10 @@ apenas rodar programas.
 
 %package static
 Summary:	Advanced Linux Sound Architecture (ALSA) - static library
-Summary(pl.UTF-8):   Advanced Linux Sound Architecture (ALSA) - biblioteka statyczna
-Summary(pt_BR.UTF-8):   Bibliotecas estáticas para desenvolvimento com a alsa-lib
-Summary(ru.UTF-8):   Статическая библиотека API для работы с драйвером ALSA
-Summary(uk.UTF-8):   Статична бібліотека API для роботи з драйвером ALSA
+Summary(pl.UTF-8):	Advanced Linux Sound Architecture (ALSA) - biblioteka statyczna
+Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com a alsa-lib
+Summary(ru.UTF-8):	Статическая библиотека API для работы с драйвером ALSA
+Summary(uk.UTF-8):	Статична бібліотека API для роботи з драйвером ALSA
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
