@@ -3,11 +3,11 @@
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
-Summary(es.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
-Summary(pl.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
-Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
-Summary(ru.UTF-8):	п▒п╦п╠п╩п╦п╬я┌п╣п╨п╟ API п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│ п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA
-Summary(uk.UTF-8):	п▒я√п╠п╩я√п╬я┌п╣п╨п╟ API п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA
+Summary(es):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
+Summary(pl):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
+Summary(pt_BR):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
+Summary(ru):	Библиотека API для работы с драйвером ALSA
+Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.13
 Release:	3
@@ -15,7 +15,7 @@ License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 # Source0-md5:	d55a9d7d2a79d738a1b7a511cffda4b6
-Patch0:		%{name}-am110.patch
+Patch0:		%{name}-symbols.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf
@@ -57,50 +57,50 @@ Features:
 	- full mixer compatibity
 	- full PCM (/dev/dsp) compatibility
 
-%description -l pl.UTF-8
+%description -l pl
 Advanced Linux Sound Architecture (ALSA) - Biblioteka
 
-Moе╪liwoе⌡ci:
+Mo©liwo╤ci:
 - generalne
 	- zmodularyzowana architektura
-	- peе┌ne wsparcie dla systemu plikцЁw proc - /proc/sound
-- karty dе╨wiд≥kowe ISA
-	- obsе┌uga bufora 128k ISA DMA
+	- peЁne wsparcie dla systemu plikСw proc - /proc/sound
+- karty d╪wiЙkowe ISA
+	- obsЁuga bufora 128k ISA DMA
 - mikser
 	- nowe rozszerzone API dla aplikacji
-	- obsе┌uga nielimitowanej liczby kanaе┌цЁw
-	- gе┌oе⌡noе⌡д┤ moе╪e byд┤ ustawiana na trzy rцЁе╪ne sposoby (procentowo
+	- obsЁuga nielimitowanej liczby kanaЁСw
+	- gЁo╤no╤Ф mo©e byФ ustawiana na trzy rС©ne sposoby (procentowo
 	  (0-100), liniowo oraz w skali decybelowej)
-	- obsе┌uga wyciszania (oraz sprzд≥towego wyciszania)
-	- obsе┌uga zdarzeе└ miksera
-		- to pozwala dwum lub wiд≥kszej liczbie aplikacji siд≥ synchronizowaд┤
+	- obsЁuga wyciszania (oraz sprzЙtowego wyciszania)
+	- obsЁuga zdarzeЯ miksera
+		- to pozwala dwum lub wiЙkszej liczbie aplikacji siЙ synchronizowaФ
 - cyfrowe audio (PCM)
 	- nowe rozszerzone API dla aplikacji
-	- peе┌na, prawdziwa obsе┌uga trybu duplex
-	- peе┌na obsе┌uga trybu duplex dla kart SoundBlaster 16/AWE
-	- dane cyfrowego dе╨wiд≥ku dla odtwarzania i nagrywania powinny byд┤
-	  odczytywane poprzez system plikцЁw /proc
-- kompatybilnoе⌡д┤ z OSS/Lite
-	- peе┌na kompatybilnoе⌡д┤ miksera
-	- peе┌na kompatybilnoе⌡д┤ PCM (/dev/dsp)
+	- peЁna, prawdziwa obsЁuga trybu duplex
+	- peЁna obsЁuga trybu duplex dla kart SoundBlaster 16/AWE
+	- dane cyfrowego d╪wiЙku dla odtwarzania i nagrywania powinny byФ
+	  odczytywane poprzez system plikСw /proc
+- kompatybilno╤Ф z OSS/Lite
+	- peЁna kompatybilno╤Ф miksera
+	- peЁna kompatybilno╤Ф PCM (/dev/dsp)
 
-%description -l pt_BR.UTF-8
-Bibliotecas para o ALSA. Esse pacote ц╘ necessц║rio para rodar programas
+%description -l pt_BR
+Bibliotecas para o ALSA. Esse pacote И necessАrio para rodar programas
 Linux queusam o driver de som ALSA.
 
-%description -l ru.UTF-8
-п▒п╦п╠п╩п╦п╬я┌п╣п╨п╟ API п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│ п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA.
+%description -l ru
+Библиотека API для работы с драйвером ALSA.
 
-%description -l uk.UTF-8
-п▒я√п╠п╩я√п╬я┌п╣п╨п╟ API п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA.
+%description -l uk
+Б╕бл╕отека API для роботи з драйвером ALSA.
 
 %package devel
 Summary:	Advanced Linux Sound Architecture (ALSA) - header files
-Summary(es.UTF-8):	Archivos de desarrollo de ALSA
-Summary(pl.UTF-8):	Advanced Linux Sound Architecture (ALSA) - pliki nagе┌цЁwkowe
-Summary(pt_BR.UTF-8):	Arquivos de desenvolvimento do ALSA (Advanced Linux Sound Architecture)
-Summary(ru.UTF-8):	п▒п╦п╠п╩п╦п╬я┌п╣п╨п╟ API п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│ п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA - я└п╟п╧п╩я▀ п©я─п╬пЁя─п╟п╪п╪п╦я│я┌п╟
-Summary(uk.UTF-8):	п▒я√п╠п╩я√п╬я┌п╣п╨п╟ API п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA - я└п╟п╧п╩п╦ п©я─п╬пЁя─п╟п╪я√я│я┌п╟
+Summary(es):	Archivos de desarrollo de ALSA
+Summary(pl):	Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe
+Summary(pt_BR):	Arquivos de desenvolvimento do ALSA (Advanced Linux Sound Architecture)
+Summary(ru):	Библиотека API для работы с драйвером ALSA - файлы программиста
+Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA - файли програм╕ста
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	alsa-driver-devel
@@ -110,50 +110,50 @@ Obsoletes:	alsa-lib-devel-doc
 %description devel
 Advanced Linux Sound Architecture (ALSA) - header files.
 
-%description devel -l es.UTF-8
+%description devel -l es
 Este paquete contiene los archivos necesarios para compilar programas
 que usan la biblioteca del sistema ALSA. No es necesario instalarlo si
 lo que se desea es solamente ejecutar programas.
 
-%description devel -l pl.UTF-8
-Advanced Linux Sound Architecture (ALSA) - pliki nagе┌цЁwkowe.
+%description devel -l pl
+Advanced Linux Sound Architecture (ALSA) - pliki nagЁСwkowe.
 
-%description devel -l pt_BR.UTF-8
-Esse pacote contц╘m os arquivos necessц║rios para compilar programas que
-usam a biblioteca do ALSA. Nцёo ц╘ necessц║rio instalar esse pacote para
+%description devel -l pt_BR
+Esse pacote contИm os arquivos necessАrios para compilar programas que
+usam a biblioteca do ALSA. NЦo И necessАrio instalar esse pacote para
 apenas rodar programas.
 
-%description devel -l ru.UTF-8
-п▒п╦п╠п╩п╦п╬я┌п╣п╨п╦ я─п╟п╥я─п╟п╠п╬я┌я┤п╦п╨п╟ п╦ я┘п╣п╢п╣я─п╟ п╢п╩я▐ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╦ API п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│
-п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA.
+%description devel -l ru
+Библиотеки разработчика и хедера для библиотеки API для работы с
+драйвером ALSA.
 
-%description devel -l uk.UTF-8
-п▒я√п╠п╩я√п╬я┌п╣п╨п╦ п©я─п╬пЁя─п╟п╪я√я│я┌п╟ я┌п╟ я┘п╣п╢п╣я─п╦ п╢п╩я▐ п╠я√п╠п╩я√п╬я┌п╣п╨п╦ API п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥
-п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA.
+%description devel -l uk
+Б╕бл╕отеки програм╕ста та хедери для б╕бл╕отеки API для роботи з
+драйвером ALSA.
 
 %package static
 Summary:	Advanced Linux Sound Architecture (ALSA) - static library
-Summary(pl.UTF-8):	Advanced Linux Sound Architecture (ALSA) - biblioteka statyczna
-Summary(pt_BR.UTF-8):	Bibliotecas estц║ticas para desenvolvimento com a alsa-lib
-Summary(ru.UTF-8):	п║я┌п╟я┌п╦я┤п╣я│п╨п╟я▐ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ API п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│ п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA
-Summary(uk.UTF-8):	п║я┌п╟я┌п╦я┤п╫п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╟ API п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA
+Summary(pl):	Advanced Linux Sound Architecture (ALSA) - biblioteka statyczna
+Summary(pt_BR):	Bibliotecas estАticas para desenvolvimento com a alsa-lib
+Summary(ru):	Статическая библиотека API для работы с драйвером ALSA
+Summary(uk):	Статична б╕бл╕отека API для роботи з драйвером ALSA
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Advanced Linux Sound Architecture (ALSA) - static library.
 
-%description static -l pl.UTF-8
+%description static -l pl
 Advanced Linux Sound Architecture (ALSA) - biblioteka statyczna.
 
-%description static -l pt_BR.UTF-8
-Bibliotecas estц║ticas para desenvolvimento com a alsa-lib
+%description static -l pt_BR
+Bibliotecas estАticas para desenvolvimento com a alsa-lib
 
-%description static -l ru.UTF-8
-п║я┌п╟я┌п╦я┤п╣я│п╨п╟я▐ п╠п╦п╠п╩п╦п╬я┌п╣п╨п╟ API п╢п╩я▐ я─п╟п╠п╬я┌я▀ я│ п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA.
+%description static -l ru
+Статическая библиотека API для работы с драйвером ALSA.
 
-%description static -l uk.UTF-8
-п║я┌п╟я┌п╦я┤п╫п╟ п╠я√п╠п╩я√п╬я┌п╣п╨п╟ API п╢п╩я▐ я─п╬п╠п╬я┌п╦ п╥ п╢я─п╟п╧п╡п╣я─п╬п╪ ALSA.
+%description static -l uk
+Статична б╕бл╕отека API для роботи з драйвером ALSA.
 
 %prep
 %setup -q
