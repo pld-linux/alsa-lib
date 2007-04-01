@@ -10,11 +10,12 @@ Summary(ru):	Библиотека API для работы с драйвером ALSA
 Summary(uk):	Б╕бл╕отека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.13
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 # Source0-md5:	d55a9d7d2a79d738a1b7a511cffda4b6
+Patch0:		%{name}-symbols.patch
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf
@@ -156,6 +157,7 @@ Bibliotecas estАticas para desenvolvimento com a alsa-lib
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -163,7 +165,6 @@ Bibliotecas estАticas para desenvolvimento com a alsa-lib
 %{__autoconf}
 %{__automake}
 %configure \
-	--with-versioned=no \
 	--enable-static \
 	%{!?with_static_libs:--disable-static}
 
