@@ -2,6 +2,9 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
+
+%define	_rc	rc3
+
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(es.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
 Summary(pl.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
@@ -9,12 +12,12 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.0.14rc2
-Release:	1
+Version:	1.0.14
+Release:	0.%{_rc}.1
 License:	LGPL
 Group:		Libraries
-Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	7ea3319690672d4bbd5f950947b705b7
+Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}%{_rc}.tar.bz2
+# Source0-md5:	16b9ae3b1ebb031c23d8e50755cc81db
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf
@@ -155,7 +158,7 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 Статична бібліотека API для роботи з драйвером ALSA.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{_rc}
 
 %build
 %{__libtoolize}
