@@ -3,7 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 #
 
-%define	_rc	rc3
+%define	_rc	rc4
 
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(es.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
@@ -17,7 +17,7 @@ Release:	0.%{_rc}.1
 License:	LGPL
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}%{_rc}.tar.bz2
-# Source0-md5:	16b9ae3b1ebb031c23d8e50755cc81db
+# Source0-md5:	1c96a1e36270bc22df0a85f74df64290
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf
