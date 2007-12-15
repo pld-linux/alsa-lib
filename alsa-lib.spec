@@ -1,6 +1,8 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
+%bcond_with	python		# build smixer-python.so
+%bcond_with	resmgr		# Resource Manager support
 #
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(es.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
@@ -20,10 +22,9 @@ BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	doxygen
-BuildRequires:	flex
-BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
-BuildRequires:	ncurses-devel
+%{?with_python:BuildRequires:	python-devel}
+%{?with_resmgr:BuildRequires:	resmgr-devel}
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -164,6 +165,8 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 %{__automake}
 %configure \
 	--enable-static \
+	%{!?with_python:--disable-python} \
+	%{?with_resmgr:--enable-resmgr} \
 	%{!?with_static_libs:--disable-static}
 
 %{__make}
@@ -187,11 +190,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/aserver
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_libdir}/alsa-lib
 %dir %{_libdir}/alsa-lib/smixer
-%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-*.so
+%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-ac97.so
+%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-hda.so
+%{?with_python:%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-python.so}
+%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-sbase.so
 %{_datadir}/alsa
 
 %files devel
