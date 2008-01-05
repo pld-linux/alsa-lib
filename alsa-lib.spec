@@ -191,7 +191,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/aserver
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/libasound.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libasound.so.2
 %dir %{_libdir}/alsa-lib
 %dir %{_libdir}/alsa-lib/smixer
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-ac97.so
@@ -203,15 +204,15 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %doc doc/doxygen/html/*
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_aclocaldir}/alsa.m4
-%{_includedir}/sys/*.h
+%attr(755,root,root) %{_libdir}/libasound.so
+%{_libdir}/libasound.la
+%{_includedir}/sys/asoundlib.h
 %{_includedir}/alsa
-%{_pkgconfigdir}/*.pc
+%{_aclocaldir}/alsa.m4
+%{_pkgconfigdir}/alsa.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libasound.a
 %endif
