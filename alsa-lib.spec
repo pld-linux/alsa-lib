@@ -203,6 +203,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc doc/asoundrc.txt
 %attr(755,root,root) %{_bindir}/aserver
 %attr(755,root,root) %{_libdir}/libasound.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libasound.so.2
