@@ -1,6 +1,8 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
+%bcond_without	python		# smixer-python binding
+%bcond_with	resmgr		# Resource Manager support
 #
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(es.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
@@ -9,22 +11,20 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.0.13
-Release:	3
-License:	LGPL
+Version:	1.0.16
+Release:	1
+License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	d55a9d7d2a79d738a1b7a511cffda4b6
-Patch0:		%{name}-am110.patch
+# Source0-md5:	73b0986758bb762648a5fafc93e287c1
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	doxygen
-BuildRequires:	flex
-BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
-BuildRequires:	ncurses-devel
+%{?with_python:BuildRequires:	python-devel >= 1:2.4}
+%{?with_resmgr:BuildRequires:	resmgr-devel}
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -155,17 +155,31 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 %description static -l uk.UTF-8
 Статична бібліотека API для роботи з драйвером ALSA.
 
+%package smixer-python
+Summary:	Python binding module for ALSA Mixer Interface
+Summary(pl.UTF-8):	Moduł wiązania Pythona dla interfejsu miksera architektury ALSA
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description smixer-python
+Python binding module for ALSA Mixer Interface.
+
+%description smixer-python -l pl.UTF-8
+Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
+
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+%{__autoheader}
 %{__automake}
 %configure \
 	--enable-static \
+	%{!?with_python:--disable-python} \
+	%{?with_resmgr:--enable-resmgr} \
 	%{!?with_static_libs:--disable-static}
 
 %{__make}
@@ -189,25 +203,35 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%doc doc/asoundrc.txt
+%attr(755,root,root) %{_bindir}/aserver
+%attr(755,root,root) %{_libdir}/libasound.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libasound.so.2
 %dir %{_libdir}/alsa-lib
 %dir %{_libdir}/alsa-lib/smixer
-%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-*.so
+%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-ac97.so
+%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-hda.so
+%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-sbase.so
 %{_datadir}/alsa
 
 %files devel
 %defattr(644,root,root,755)
 %doc doc/doxygen/html/*
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_aclocaldir}/alsa.m4
-%{_includedir}/sys/*.h
+%attr(755,root,root) %{_libdir}/libasound.so
+%{_libdir}/libasound.la
+%{_includedir}/sys/asoundlib.h
 %{_includedir}/alsa
-%{_pkgconfigdir}/*.pc
+%{_aclocaldir}/alsa.m4
+%{_pkgconfigdir}/alsa.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libasound.a
+%endif
+
+%if %{with python}
+%files smixer-python
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-python.so
 %endif
