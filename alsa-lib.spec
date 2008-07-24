@@ -12,11 +12,12 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.17
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 # Source0-md5:	9bbbdc502478cdc75074c9ba42c385b3
+Source1:	%{name}-modprobe.conf
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf >= 2.59
@@ -188,10 +189,13 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 %install
 rm -rf $RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT/etc/modprobe.d
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
+install %SOURCE1 $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/alsa-lib/smixer/*.{a,la}
 
@@ -213,6 +217,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-hda.so
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-sbase.so
 %{_datadir}/alsa
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/alsa-base
 
 %files devel
 %defattr(644,root,root,755)
