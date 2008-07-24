@@ -195,7 +195,7 @@ install -d $RPM_BUILD_ROOT/etc/modprobe.d
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
-install %SOURCE1 $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base.conf
+install %{SOURCE1} $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base.conf
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/alsa-lib/smixer/*.{a,la}
 
