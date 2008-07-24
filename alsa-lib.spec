@@ -195,7 +195,7 @@ install -d $RPM_BUILD_ROOT/etc/modprobe.d
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
-install %SOURCE1 $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base
+install %SOURCE1 $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base.conf
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/alsa-lib/smixer/*.{a,la}
 
@@ -217,7 +217,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-hda.so
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-sbase.so
 %{_datadir}/alsa
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/alsa-base
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/alsa-base.conf
 
 %files devel
 %defattr(644,root,root,755)
