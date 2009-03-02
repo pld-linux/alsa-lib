@@ -12,7 +12,7 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.19
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
@@ -217,7 +217,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-hda.so
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-sbase.so
 %{_datadir}/alsa
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/alsa-base.conf
+%attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/alsa-base.conf
 
 %files devel
 %defattr(644,root,root,755)
