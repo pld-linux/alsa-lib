@@ -12,12 +12,13 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.20
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 # Source0-md5:	6e9080ba1faa5d3739d14dd76c62d8dc
 Source1:	%{name}-modprobe.conf
+Source2:	%{name}-asound.conf
 URL:		http://www.alsa-project.org/
 BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf >= 2.59
@@ -189,13 +190,14 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT/etc/modprobe.d
+install -d $RPM_BUILD_ROOT/etc/{alsa,modprobe.d}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base.conf
+install %{SOURCE2} $RPM_BUILD_ROOT/etc/asound.conf
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/alsa-lib/smixer/*.{a,la}
 
@@ -217,6 +219,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-hda.so
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-sbase.so
 %{_datadir}/alsa
+%{_sysconfdir}/alsa
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/asound.conf
 %attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/alsa-base.conf
 
 %files devel
