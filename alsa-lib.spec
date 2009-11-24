@@ -25,7 +25,10 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	doxygen
 BuildRequires:	libtool
-%{?with_python:BuildRequires:	python-devel >= 1:2.4}
+%if %{with python}
+BuildRequires:	python-devel >= 1:2.4
+BuildRequires:	python-modules
+%endif
 %{?with_resmgr:BuildRequires:	resmgr-devel}
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
