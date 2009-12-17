@@ -11,12 +11,12 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.0.21a
+Version:	1.0.22
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	914685deb8c23cb4b940a4173cf8efe4
+# Source0-md5:	b28a12348905fb6915bc41f0edb2ecce
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 URL:		http://www.alsa-project.org/
