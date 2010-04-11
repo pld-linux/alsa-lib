@@ -223,7 +223,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-hda.so
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-sbase.so
 %{_datadir}/alsa
-%{_sysconfdir}/alsa
+%dir %{_sysconfdir}/alsa
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/asound.conf
 %attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/alsa-base.conf
 
