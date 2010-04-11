@@ -32,6 +32,7 @@ BuildRequires:	python-modules
 %{?with_resmgr:BuildRequires:	resmgr-devel}
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
+Conflicts:	alsa-utils < 1.0.20-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
