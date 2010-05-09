@@ -1,9 +1,10 @@
 #
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
+%bcond_without	apidocs		# do not build and package API docs
 %bcond_without	python		# smixer-python binding
 %bcond_with	resmgr		# Resource Manager support
-#
+
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
 Summary(es.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteca
 Summary(pl.UTF-8):	Advanced Linux Sound Architecture (ALSA) - Biblioteka
@@ -12,7 +13,7 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.23
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
@@ -161,6 +162,17 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 %description static -l uk.UTF-8
 Статична бібліотека API для роботи з драйвером ALSA.
 
+%package apidocs
+Summary:	ALSA Library API documentation
+Summary(pl.UTF-8):	Dokumentacja API biblioteki ALSA Library
+Group:		Documentation
+
+%description apidocs
+API and internal documentation for ALSA Library.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki ALSA Library.
+
 %package smixer-python
 Summary:	Python binding module for ALSA Mixer Interface
 Summary(pl.UTF-8):	Moduł wiązania Pythona dla interfejsu miksera architektury ALSA
@@ -189,19 +201,18 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 	%{!?with_static_libs:--disable-static}
 
 %{__make}
-%{__make} doc
+%{?with_apidocs:%{__make} doc}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-install -d $RPM_BUILD_ROOT/etc/{alsa,modprobe.d}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/alsa,/etc/modprobe.d}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base.conf
-install %{SOURCE2} $RPM_BUILD_ROOT/etc/asound.conf
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/asound.conf
 
 rm -f $RPM_BUILD_ROOT%{_libdir}/alsa-lib/smixer/*.{a,la}
 
@@ -225,11 +236,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/alsa
 %dir %{_sysconfdir}/alsa
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/asound.conf
-%attr(644,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/alsa-base.conf
+%config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/alsa-base.conf
 
 %files devel
 %defattr(644,root,root,755)
-%doc doc/doxygen/html/*
 %attr(755,root,root) %{_libdir}/libasound.so
 %{_libdir}/libasound.la
 %{_includedir}/sys/asoundlib.h
@@ -241,6 +251,12 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libasound.a
+%endif
+
+%if %{with apidocs}
+%files apidocs
+%defattr(644,root,root,755)
+%doc doc/doxygen/html/*
 %endif
 
 %if %{with python}
