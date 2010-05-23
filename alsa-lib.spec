@@ -195,10 +195,10 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 %{__autoheader}
 %{__automake}
 %configure \
-	--enable-static \
+	--disable-silent-rules \
 	%{!?with_python:--disable-python} \
 	%{?with_resmgr:--enable-resmgr} \
-	%{!?with_static_libs:--disable-static}
+	%{?with_static_libs:--enable-static}
 
 %{__make}
 %{?with_apidocs:%{__make} doc}
