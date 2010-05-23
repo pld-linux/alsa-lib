@@ -164,14 +164,14 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 
 %package apidocs
 Summary:	ALSA Library API documentation
-Summary(pl.UTF-8):	Dokumentacja API biblioteki ALSA Library
+Summary(pl.UTF-8):	Dokumentacja API biblioteki ALSA
 Group:		Documentation
 
 %description apidocs
 API and internal documentation for ALSA Library.
 
 %description apidocs -l pl.UTF-8
-Dokumentacja API biblioteki ALSA Library.
+Dokumentacja API biblioteki ALSA.
 
 %package smixer-python
 Summary:	Python binding module for ALSA Mixer Interface
