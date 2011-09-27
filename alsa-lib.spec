@@ -13,7 +13,7 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.24.1
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
@@ -205,10 +205,15 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir}/alsa,/etc/modprobe.d}
+install -d $RPM_BUILD_ROOT{/%{_lib},%{_sysconfdir}/alsa,/etc/modprobe.d}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+mv -f $RPM_BUILD_ROOT%{_libdir}/libasound.so.* $RPM_BUILD_ROOT/%{_lib}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libasound.so
+ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib}; echo libasound.so.*.*) \
+	$RPM_BUILD_ROOT%{_libdir}/libasound.so
 
 install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base.conf
@@ -226,8 +231,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc doc/asoundrc.txt
 %attr(755,root,root) %{_bindir}/aserver
-%attr(755,root,root) %{_libdir}/libasound.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libasound.so.2
+%attr(755,root,root) /%{_lib}/libasound.so.*.*.*
+%attr(755,root,root) %ghost /%{_lib}/libasound.so.2
 %dir %{_libdir}/alsa-lib
 %dir %{_libdir}/alsa-lib/smixer
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-ac97.so
