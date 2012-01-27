@@ -12,12 +12,12 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.0.24.1
-Release:	2
+Version:	1.0.25
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	7cc05f25e1d5b65da8fb3fdcd540f226
+# Source0-md5:	06fe5819020c6684b991dcffc5471304
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 URL:		http://www.alsa-project.org/
@@ -190,17 +190,34 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure \
+configure_opts="\
 	--disable-silent-rules \
 	%{!?with_python:--disable-python} \
-	%{?with_resmgr:--enable-resmgr} \
-	%{?with_static_libs:--enable-static}
+	%{?with_resmgr:--enable-resmgr}
+"
+
+%if %{with static_libs}
+%configure $configure_opts \
+	--disable-shared \
+	--enable-static
+%{__make}
+install -d static
+%{__make} install \
+	DESTDIR=$(pwd)/static
+%{__make} clean
+%endif
+
+%configure $configure_opts \
+	--enable-shared \
+	--disable-static
 
 %{__make}
+
+
 %{?with_apidocs:%{__make} doc}
 
 %install
@@ -209,6 +226,8 @@ install -d $RPM_BUILD_ROOT{/%{_lib},%{_sysconfdir}/alsa,/etc/modprobe.d}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+install static/%{_libdir}/libasound.a $RPM_BUILD_ROOT%{_libdir}
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libasound.so.* $RPM_BUILD_ROOT/%{_lib}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libasound.so
