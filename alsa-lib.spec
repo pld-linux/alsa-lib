@@ -237,7 +237,7 @@ install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base.conf
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/asound.conf
 
-%{__rm} $RPM_BUILD_ROOT%{_libdir}/alsa-lib/smixer/*.{a,la}
+%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/alsa-lib/smixer/*.{a,la}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
