@@ -1,0 +1,12 @@
+diff -urN alsa-lib-1.0.27.org/configure.in alsa-lib-1.0.27/configure.in
+--- alsa-lib-1.0.27.org/configure.in	2013-04-11 13:43:05.000000000 +0200
++++ alsa-lib-1.0.27/configure.in	2013-04-14 00:15:25.366208805 +0200
+@@ -53,7 +53,7 @@
+ 
+ dnl Checks for header files.
+ AC_HEADER_STDC
+-AM_CONFIG_HEADER(include/config.h)
++AC_CONFIG_HEADERS(include/config.h)
+ 
+ dnl Checks for typedefs, structures, and compiler characteristics.
+ AC_C_CONST
