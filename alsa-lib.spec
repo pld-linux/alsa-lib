@@ -13,7 +13,7 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.0.27.2
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
@@ -21,7 +21,6 @@ Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 URL:		http://www.alsa-project.org/
-BuildRequires:	alsa-driver-devel
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	doxygen
@@ -110,7 +109,6 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA - файли програміста
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	alsa-driver-devel
 Obsoletes:	alsa-devel
 Obsoletes:	alsa-lib-devel-doc
 
