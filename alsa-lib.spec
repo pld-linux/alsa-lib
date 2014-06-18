@@ -199,32 +199,36 @@ configure_opts="\
 "
 
 %if %{with static_libs}
-%configure $configure_opts \
+install -d build-static
+cd build-static
+../%configure $configure_opts \
 	--disable-shared \
 	--enable-static
 %{__make}
-install -d static
-%{__make} install \
-	DESTDIR=$(pwd)/static
-%{__make} clean
+cd ..
 %endif
 
-%configure $configure_opts \
+install -d build-shared
+cd build-shared
+../%configure $configure_opts \
 	--enable-shared \
 	--disable-static
 
 %{__make}
-
 %{?with_apidocs:%{__make} doc}
+cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/%{_lib},%{_sysconfdir}/alsa,/etc/modprobe.d}
 
-%{__make} install \
+%if %{with static_libs}
+%{__make} -C build-static/src install-libLTLIBRARIES \
 	DESTDIR=$RPM_BUILD_ROOT
+%endif
 
-install static/%{_libdir}/libasound.a $RPM_BUILD_ROOT%{_libdir}
+%{__make} -C build-shared install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 mv -f $RPM_BUILD_ROOT%{_libdir}/libasound.so.* $RPM_BUILD_ROOT/%{_lib}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libasound.so
@@ -235,7 +239,7 @@ install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base.conf
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/asound.conf
 
-%{__rm} -f $RPM_BUILD_ROOT%{_libdir}/alsa-lib/smixer/*.{a,la}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/alsa-lib/smixer/*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -277,7 +281,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%doc doc/doxygen/html/*
+%doc build-shared/doc/doxygen/html/*
 %endif
 
 %if %{with python}
