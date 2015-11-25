@@ -12,19 +12,19 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.0.29
-Release:	2
+Version:	1.1.0
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	de67e0eca72474d6b1121037dafe1024
+# Source0-md5:	69515ca73c3c4a212ef45160dea846c1
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 URL:		http://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	doxygen
-BuildRequires:	libtool
+BuildRequires:	libtool >= 1.4
 %if %{with python}
 BuildRequires:	python-devel >= 1:2.4
 BuildRequires:	python-modules
