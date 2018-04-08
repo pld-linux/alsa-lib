@@ -12,14 +12,15 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.1.5
+Version:	1.1.6
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	a2b465c3a5265d8a57f3ff39c6c4fc29
+# Source0-md5:	2f981a8f7897c59ec2ddc44916d33788
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
+Source3:	smixer.conf
 URL:		http://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -188,6 +189,7 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 
 %prep
 %setup -q
+cp -p %{SOURCE3} src/conf
 
 %build
 %{__libtoolize}
@@ -198,7 +200,9 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 configure_opts="\
 	--disable-silent-rules \
 	%{!?with_python:--disable-python} \
-	%{?with_resmgr:--enable-resmgr}
+	%{?with_resmgr:--enable-resmgr} \
+	--enable-mixer-modules \
+	--enable-mixer-pymods
 "
 
 %if %{with static_libs}
