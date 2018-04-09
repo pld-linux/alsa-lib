@@ -3,6 +3,7 @@
 %bcond_without	static_libs	# don't build static library
 %bcond_without	apidocs		# do not build and package API docs
 %bcond_without	python		# smixer-python binding
+%bcond_with	python2		# python 2.x instead of python 3.x for smixer pymodules
 %bcond_with	resmgr		# Resource Manager support
 
 Summary:	Advanced Linux Sound Architecture (ALSA) - Library
@@ -27,8 +28,12 @@ BuildRequires:	automake
 BuildRequires:	doxygen
 BuildRequires:	libtool >= 1.4
 %if %{with python}
+%if %{with python2}
 BuildRequires:	python-devel >= 1:2.4
-BuildRequires:	python-modules
+BuildRequires:	python-modules >= 1:2.4
+%else
+BuildRequires:	python3-devel >= 1:3.2
+BuildRequires:	python3-modules >= 1:3.2
 %endif
 %{?with_resmgr:BuildRequires:	resmgr-devel}
 BuildConflicts:	alsa-lib <= 0.4.0
@@ -200,6 +205,7 @@ cp -p %{SOURCE3} src/conf
 configure_opts="\
 	--disable-silent-rules \
 	%{!?with_python:--disable-python} \
+	%{?with_python2:--enable-python2} \
 	%{?with_resmgr:--enable-resmgr} \
 	--enable-mixer-modules \
 	--enable-mixer-pymods
@@ -237,7 +243,7 @@ install -d $RPM_BUILD_ROOT{/%{_lib},%{_sysconfdir}/alsa,/etc/modprobe.d}
 %{__make} -C build-shared install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv -f $RPM_BUILD_ROOT%{_libdir}/libasound.so.* $RPM_BUILD_ROOT/%{_lib}
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/libasound.so.* $RPM_BUILD_ROOT/%{_lib}
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/libasound.so
 ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib}; echo libasound.so.*.*) \
 	$RPM_BUILD_ROOT%{_libdir}/libasound.so
