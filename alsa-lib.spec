@@ -14,7 +14,7 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.1.7
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
@@ -234,7 +234,7 @@ cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{/%{_lib},%{_sysconfdir}/alsa,/etc/modprobe.d}
+install -d $RPM_BUILD_ROOT{/%{_lib},%{_sysconfdir}/alsa/conf.d,%{_datadir}/alsa/alsa.conf.d,/etc/modprobe.d}
 
 %if %{with static_libs}
 %{__make} -C build-static/src install-libLTLIBRARIES \
@@ -272,8 +272,18 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-ac97.so
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-hda.so
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-sbase.so
-%{_datadir}/alsa
+%dir %{_datadir}/alsa
+%{_datadir}/alsa/cards
+%{_datadir}/alsa/pcm
+%{_datadir}/alsa/topology
+%{_datadir}/alsa/ucm
+%{_datadir}/alsa/alsa.conf
+# directory for "global" config files (not accessed directly, but through symlinks in %{_sysconfdir}/alsa/conf.d)
+%dir %{_datadir}/alsa/alsa.conf.d
+%{_datadir}/alsa/smixer.conf
 %dir %{_sysconfdir}/alsa
+# directory for "local" config files (loaded from %{_datadir}/alsa/alsa.conf)
+%dir %{_sysconfdir}/alsa/conf.d
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/asound.conf
 %config(noreplace) %verify(not md5 mtime size) /etc/modprobe.d/alsa-base.conf
 
