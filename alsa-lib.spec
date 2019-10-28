@@ -14,7 +14,7 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.1.9
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
