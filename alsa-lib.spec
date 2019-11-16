@@ -13,12 +13,12 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.1.9
-Release:	3
+Version:	1.2.1
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	e6d429dbdcfaa0f034d907fa6dc3735e
+# Source0-md5:	7f7cae6925c99d900dfdfe9b7b056ccc
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 Source3:	smixer.conf
@@ -269,6 +269,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/aserver
 %attr(755,root,root) /%{_lib}/libasound.so.*.*.*
 %attr(755,root,root) %ghost /%{_lib}/libasound.so.2
+%attr(755,root,root) /%{_libdir}/libatopology.so.*.*.*
+%attr(755,root,root) %ghost /%{_libdir}/libatopology.so.2
 %dir %{_libdir}/alsa-lib
 %dir %{_libdir}/alsa-lib/smixer
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-ac97.so
@@ -277,8 +279,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/alsa
 %{_datadir}/alsa/cards
 %{_datadir}/alsa/pcm
-%{_datadir}/alsa/topology
-%{_datadir}/alsa/ucm
 %{_datadir}/alsa/alsa.conf
 # directory for "global" config files (not accessed directly, but through symlinks in %{_sysconfdir}/alsa/conf.d)
 %dir %{_datadir}/alsa/alsa.conf.d
@@ -292,12 +292,15 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libasound.so
+%attr(755,root,root) %{_libdir}/libatopology.so
 %{_libdir}/libasound.la
+%{_libdir}/libatopology.la
 %{_includedir}/sys/asoundlib.h
 %{_includedir}/alsa
 %{_includedir}/asoundlib.h
 %{_aclocaldir}/alsa.m4
 %{_pkgconfigdir}/alsa.pc
+%{_pkgconfigdir}/alsa-topology.pc
 
 %if %{with static_libs}
 %files static
