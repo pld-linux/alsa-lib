@@ -196,7 +196,9 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 
 %prep
 %setup -q
+%if %{without python2} && "%{py3_ver}" >= "3.8"
 %patch0 -p1
+%endif
 cp -p %{SOURCE3} src/conf
 
 %build
