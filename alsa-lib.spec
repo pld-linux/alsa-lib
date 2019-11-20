@@ -13,17 +13,21 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.2.1
+Version:	1.2.1.1
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	7f7cae6925c99d900dfdfe9b7b056ccc
+# Source0-md5:	1d428f46d6160f5e4bbdd64a2ff34f45
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 Source3:	smixer.conf
+Source4:	ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-1.2.1.tar.bz2
+# Source4-md5:	7fdf5fff3f1e0603456e719f6033e922
+Source5:	ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-1.2.1.tar.bz2
+# Source5-md5:	73697aaba4e9701bd2d3ae17ccd1a005
 Patch0:		python-3.8.patch
-URL:		http://www.alsa-project.org/
+URL:		https://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	doxygen
@@ -253,6 +257,9 @@ install -d $RPM_BUILD_ROOT{/%{_lib},%{_sysconfdir}/alsa/conf.d,%{_datadir}/alsa/
 ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib}; echo libasound.so.*.*) \
 	$RPM_BUILD_ROOT%{_libdir}/libasound.so
 
+tar xf %{SOURCE4} -C $RPM_BUILD_ROOT%{_datadir}/alsa topology
+tar xf %{SOURCE5} -C $RPM_BUILD_ROOT%{_datadir}/alsa ucm ucm2
+
 install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base.conf
 install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/asound.conf
@@ -281,6 +288,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/alsa
 %{_datadir}/alsa/cards
 %{_datadir}/alsa/pcm
+%{_datadir}/alsa/topology
+%{_datadir}/alsa/ucm
+%{_datadir}/alsa/ucm2
 %{_datadir}/alsa/alsa.conf
 # directory for "global" config files (not accessed directly, but through symlinks in %{_sysconfdir}/alsa/conf.d)
 %dir %{_datadir}/alsa/alsa.conf.d
