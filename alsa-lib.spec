@@ -14,6 +14,8 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
 Version:	1.2.2
+# alsa-*-conf tarballs are not released for each patch version
+%define	confver	%{version}
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
@@ -22,10 +24,10 @@ Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 Source3:	smixer.conf
-Source4:	ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-1.2.1.tar.bz2
-# Source4-md5:	7fdf5fff3f1e0603456e719f6033e922
-Source5:	ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-1.2.1.tar.bz2
-# Source5-md5:	73697aaba4e9701bd2d3ae17ccd1a005
+Source4:	ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-%{confver}.tar.bz2
+# Source4-md5:	123c3d019725200b5fbd14d00a47d555
+Source5:	ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{confver}.tar.bz2
+# Source5-md5:	ef97accb648473143ac294091eafdd18
 Patch0:		python-3.8.patch
 URL:		https://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
@@ -42,6 +44,7 @@ BuildRequires:	python3-modules >= 1:3.2
 %endif
 %endif
 %{?with_resmgr:BuildRequires:	resmgr-devel}
+BuildRequires:	tar >= 1:1.15
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
 Conflicts:	alsa-utils < 1.0.20-3
@@ -176,7 +179,7 @@ Bibliotecas estáticas para desenvolvimento com a alsa-lib
 Summary:	ALSA Library API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki ALSA
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -257,8 +260,8 @@ install -d $RPM_BUILD_ROOT{/%{_lib},%{_sysconfdir}/alsa/conf.d,%{_datadir}/alsa/
 ln -sf /%{_lib}/$(cd $RPM_BUILD_ROOT/%{_lib}; echo libasound.so.*.*) \
 	$RPM_BUILD_ROOT%{_libdir}/libasound.so
 
-tar xf %{SOURCE4} -C $RPM_BUILD_ROOT%{_datadir}/alsa topology
-tar xf %{SOURCE5} -C $RPM_BUILD_ROOT%{_datadir}/alsa ucm ucm2
+tar xf %{SOURCE4} --strip-components=1 -C $RPM_BUILD_ROOT%{_datadir}/alsa alsa-topology-conf-%{confver}/topology
+tar xf %{SOURCE5} --strip-components=1 -C $RPM_BUILD_ROOT%{_datadir}/alsa alsa-ucm-conf-%{confver}/ucm alsa-ucm-conf-%{confver}/ucm2
 
 install -D utils/alsa.m4 $RPM_BUILD_ROOT%{_aclocaldir}/alsa.m4
 install %{SOURCE1} $RPM_BUILD_ROOT/etc/modprobe.d/alsa-base.conf
