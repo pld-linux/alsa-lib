@@ -13,22 +13,21 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.2.2
+Version:	1.2.3
 # alsa-*-conf tarballs are not released for each patch version
 %define	confver	%{version}
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	82cdc23a5233d5ed319d2cbc89af5ca5
+# Source0-md5:	2cdbd528f93beb8348f1cbb895e19785
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 Source3:	smixer.conf
 Source4:	ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-%{confver}.tar.bz2
-# Source4-md5:	123c3d019725200b5fbd14d00a47d555
+# Source4-md5:	85bcf2a960a64e631712747d7d243f47
 Source5:	ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{confver}.tar.bz2
-# Source5-md5:	ef97accb648473143ac294091eafdd18
-Patch0:		python-3.8.patch
+# Source5-md5:	38977ae68c7c5e24365289d24aab3677
 URL:		https://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -203,9 +202,6 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 
 %prep
 %setup -q
-%if %{without python2} && "%{py3_ver}" >= "3.8"
-%patch0 -p1
-%endif
 cp -p %{SOURCE3} src/conf
 
 %build
