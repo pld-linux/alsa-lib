@@ -15,7 +15,7 @@ Summary(uk.UTF-8):	Бібліотека API для роботи з драйве�
 Name:		alsa-lib
 Version:	1.2.4
 # alsa-*-conf tarballs are not released for each patch version
-%define	confver	1.2.3
+%define	confver	1.2.4
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
@@ -25,9 +25,9 @@ Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 Source3:	smixer.conf
 Source4:	ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-%{confver}.tar.bz2
-# Source4-md5:	85bcf2a960a64e631712747d7d243f47
+# Source4-md5:	a5934e86c726a16d3c1bbce4f04aa1bc
 Source5:	ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{confver}.tar.bz2
-# Source5-md5:	38977ae68c7c5e24365289d24aab3677
+# Source5-md5:	176f06dc581b6574dd7399e335903c4b
 URL:		https://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
