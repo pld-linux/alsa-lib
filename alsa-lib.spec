@@ -16,7 +16,7 @@ Name:		alsa-lib
 Version:	1.2.4
 # alsa-*-conf tarballs are not released for each patch version
 %define	confver	1.2.4
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
