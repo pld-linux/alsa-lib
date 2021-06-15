@@ -16,7 +16,7 @@ Name:		alsa-lib
 Version:	1.2.5.1
 # alsa-*-conf tarballs are not released for each patch version
 %define	confver	1.2.5.1
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
@@ -28,6 +28,7 @@ Source4:	ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-%{confver}.tar.bz
 # Source4-md5:	066d6a980e09a2fa44b4cc1d06ecc0ea
 Source5:	ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{confver}.tar.bz2
 # Source5-md5:	86ac831b4273c762196f8c1f67907c69
+Patch0:		symbol_mismatch.patch
 URL:		https://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -200,6 +201,7 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 
 %prep
 %setup -q
+%patch0 -p1
 cp -p %{SOURCE3} src/conf
 
 %build

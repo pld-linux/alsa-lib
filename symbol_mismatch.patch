@@ -1,0 +1,11 @@
+--- alsa-lib-1.2.5.1/src/control/control_empty.c.orig	2021-06-15 15:45:18.783814585 +0000
++++ alsa-lib-1.2.5.1/src/control/control_empty.c	2021-06-15 15:45:29.317123597 +0000
+@@ -30,7 +30,7 @@
+ 
+ #ifndef PIC
+ /* entry for static linking */
+-const char *_snd_module_ctl_empty = "";
++const char *_snd_module_control_empty = "";
+ #endif
+ 
+ /*! \page control_plugins
