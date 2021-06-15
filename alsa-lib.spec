@@ -13,21 +13,21 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.2.4
+Version:	1.2.5.1
 # alsa-*-conf tarballs are not released for each patch version
-%define	confver	1.2.4
-Release:	2
+%define	confver	1.2.5.1
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	875184646a96e34bbe7a91925cd7b2ba
+# Source0-md5:	c8335793e7828803311edc48fb71662e
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 Source3:	smixer.conf
 Source4:	ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-%{confver}.tar.bz2
-# Source4-md5:	a5934e86c726a16d3c1bbce4f04aa1bc
+# Source4-md5:	066d6a980e09a2fa44b4cc1d06ecc0ea
 Source5:	ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{confver}.tar.bz2
-# Source5-md5:	176f06dc581b6574dd7399e335903c4b
+# Source5-md5:	86ac831b4273c762196f8c1f67907c69
 URL:		https://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -284,6 +284,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/alsa-lib/smixer/smixer-sbase.so
 %dir %{_datadir}/alsa
 %{_datadir}/alsa/cards
+%{_datadir}/alsa/ctl
 %{_datadir}/alsa/pcm
 %{_datadir}/alsa/topology
 %{_datadir}/alsa/ucm
