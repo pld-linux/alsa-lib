@@ -44,6 +44,7 @@ BuildRequires:	python3-modules >= 1:3.2
 %endif
 %endif
 %{?with_resmgr:BuildRequires:	resmgr-devel}
+BuildRequires:	rpm-build >= 4.6
 BuildRequires:	tar >= 1:1.15
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs
