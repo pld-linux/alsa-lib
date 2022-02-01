@@ -16,8 +16,8 @@ Name:		alsa-lib
 Version:	1.2.6.1
 # alsa-*-conf tarballs are not released for each patch version
 %define	topology_confver	1.2.5.1
-%define	ucm_confver		1.2.6.2
-Release:	2
+%define	ucm_confver		1.2.6.3
+Release:	3
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
@@ -28,7 +28,7 @@ Source3:	smixer.conf
 Source4:	ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-%{topology_confver}.tar.bz2
 # Source4-md5:	066d6a980e09a2fa44b4cc1d06ecc0ea
 Source5:	ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{ucm_confver}.tar.bz2
-# Source5-md5:	e758f271cf43469211486c96afdc1b3a
+# Source5-md5:	8b23fb19430b9e6ef47776de4b55c420
 URL:		https://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
