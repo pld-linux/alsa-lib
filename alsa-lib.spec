@@ -29,6 +29,7 @@ Source4:	ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-%{topology_confve
 # Source4-md5:	066d6a980e09a2fa44b4cc1d06ecc0ea
 Source5:	ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{ucm_confver}.tar.bz2
 # Source5-md5:	8b23fb19430b9e6ef47776de4b55c420
+Patch0:		python3.10.patch
 URL:		https://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -202,6 +203,7 @@ Moduł wiązania Pythona dla interfejsu miksera architektury ALSA.
 
 %prep
 %setup -q
+%patch0 -p1
 cp -p %{SOURCE3} src/conf
 
 %build
