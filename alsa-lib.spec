@@ -47,7 +47,7 @@ BuildRequires:	python3-modules >= 1:3.2
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	tar >= 1:1.15
 BuildConflicts:	alsa-lib <= 0.4.0
-Obsoletes:	alsa-libs
+Obsoletes:	alsa-libs < 0.5.2
 Conflicts:	alsa-utils < 1.0.20-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -125,8 +125,8 @@ Summary(ru.UTF-8):	Библиотека API для работы с драйве�
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA - файли програміста
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Obsoletes:	alsa-devel
-Obsoletes:	alsa-lib-devel-doc
+Obsoletes:	alsa-devel < 0.9
+Obsoletes:	alsa-lib-devel-doc < 0.9
 
 %description devel
 Advanced Linux Sound Architecture (ALSA) - header files.
