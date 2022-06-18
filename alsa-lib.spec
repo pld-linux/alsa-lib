@@ -13,22 +13,22 @@ Summary(pt_BR.UTF-8):	Biblioteca para o ALSA (Advanced Linux Sound Architecture)
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA
 Name:		alsa-lib
-Version:	1.2.7
+Version:	1.2.7.1
 # alsa-*-conf tarballs are not released for each patch version
 %define	topology_confver	1.2.5.1
-%define	ucm_confver		1.2.6.3
+%define	ucm_confver		1.2.7.1
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
-# Source0-md5:	485d2e9cb91806f0a5732d769cda2800
+# Source0-md5:	4835f8083b234ae17988d61075ee146e
 Source1:	%{name}-modprobe.conf
 Source2:	%{name}-asound.conf
 Source3:	smixer.conf
 Source4:	ftp://ftp.alsa-project.org/pub/lib/alsa-topology-conf-%{topology_confver}.tar.bz2
 # Source4-md5:	066d6a980e09a2fa44b4cc1d06ecc0ea
 Source5:	ftp://ftp.alsa-project.org/pub/lib/alsa-ucm-conf-%{ucm_confver}.tar.bz2
-# Source5-md5:	8b23fb19430b9e6ef47776de4b55c420
+# Source5-md5:	20d8d0a7f43164dde0b70ca457d25743
 URL:		https://www.alsa-project.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
