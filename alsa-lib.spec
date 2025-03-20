@@ -17,7 +17,7 @@ Version:	1.2.13
 # alsa-*-conf tarballs are not released for each patch version
 %define	topology_confver	1.2.5.1
 %define	ucm_confver		1.2.13
-Release:	3
+Release:	4
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	ftp://ftp.alsa-project.org/pub/lib/%{name}-%{version}.tar.bz2
