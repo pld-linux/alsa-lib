@@ -45,6 +45,7 @@ BuildRequires:	python3-modules >= 1:3.2
 %endif
 %{?with_resmgr:BuildRequires:	resmgr-devel}
 BuildRequires:	rpm-build >= 4.6
+BuildRequires:	rpmbuild(macros) >= 2.043
 BuildRequires:	tar >= 1:1.15
 BuildConflicts:	alsa-lib <= 0.4.0
 Obsoletes:	alsa-libs < 0.5.2
@@ -219,10 +220,11 @@ configure_opts="\
 	--enable-mixer-pymods
 "
 
+%define	configuredir	..
 %if %{with static_libs}
 install -d build-static
 cd build-static
-../%configure $configure_opts \
+%configure $configure_opts \
 	--disable-shared \
 	--enable-static
 %{__make}
@@ -231,7 +233,7 @@ cd ..
 
 install -d build-shared
 cd build-shared
-../%configure $configure_opts \
+%configure $configure_opts \
 	--enable-shared \
 	--disable-static
 
