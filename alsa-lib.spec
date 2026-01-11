@@ -125,7 +125,7 @@ Summary(pt_BR.UTF-8):	Arquivos de desenvolvimento do ALSA (Advanced Linux Sound 
 Summary(ru.UTF-8):	Библиотека API для работы с драйвером ALSA - файлы программиста
 Summary(uk.UTF-8):	Бібліотека API для роботи з драйвером ALSA - файли програміста
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 Obsoletes:	alsa-devel < 0.9
 Obsoletes:	alsa-lib-devel-doc < 0.9
 
@@ -160,7 +160,7 @@ Summary(pt_BR.UTF-8):	Bibliotecas estáticas para desenvolvimento com a alsa-lib
 Summary(ru.UTF-8):	Статическая библиотека API для работы с драйвером ALSA
 Summary(uk.UTF-8):	Статична бібліотека API для роботи з драйвером ALSA
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-devel%{?_isa} = %{version}-%{release}
 
 %description static
 Advanced Linux Sound Architecture (ALSA) - static library.
@@ -193,7 +193,7 @@ Dokumentacja API biblioteki ALSA.
 Summary:	Python binding module for ALSA Mixer Interface
 Summary(pl.UTF-8):	Moduł wiązania Pythona dla interfejsu miksera architektury ALSA
 Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 
 %description smixer-python
 Python binding module for ALSA Mixer Interface.
